@@ -42,10 +42,15 @@ Partial Class Cifrar
         Me.cbMostrarClave = New System.Windows.Forms.CheckBox()
         Me.tbClave = New System.Windows.Forms.TextBox()
         Me.tbCarga = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tbTamImagen = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -66,11 +71,11 @@ Partial Class Cifrar
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 11)
+        Me.Label2.Location = New System.Drawing.Point(7, 11)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(108, 16)
+        Me.Label2.Size = New System.Drawing.Size(90, 16)
         Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Texto a encriptar"
+        Me.Label2.Text = "Texto a Cifrar:"
         '
         'tbTextoCifrar
         '
@@ -86,7 +91,7 @@ Partial Class Cifrar
         '
         Me.btnCifrar.BackColor = System.Drawing.SystemColors.Control
         Me.btnCifrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCifrar.Location = New System.Drawing.Point(470, 276)
+        Me.btnCifrar.Location = New System.Drawing.Point(10, 10)
         Me.btnCifrar.Name = "btnCifrar"
         Me.btnCifrar.Size = New System.Drawing.Size(103, 27)
         Me.btnCifrar.TabIndex = 22
@@ -96,6 +101,7 @@ Partial Class Cifrar
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.tbTamImagen)
         Me.Panel1.Controls.Add(Me.tbInformacion)
         Me.Panel1.Controls.Add(Me.btnCargar)
         Me.Panel1.Controls.Add(Me.pbImagenCifrada)
@@ -103,7 +109,7 @@ Partial Class Cifrar
         Me.Panel1.Controls.Add(Me.pbImagen)
         Me.Panel1.Location = New System.Drawing.Point(12, 68)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(571, 191)
+        Me.Panel1.Size = New System.Drawing.Size(573, 191)
         Me.Panel1.TabIndex = 27
         '
         'tbInformacion
@@ -111,11 +117,11 @@ Partial Class Cifrar
         Me.tbInformacion.BackColor = System.Drawing.Color.White
         Me.tbInformacion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tbInformacion.Cursor = System.Windows.Forms.Cursors.Default
-        Me.tbInformacion.ForeColor = System.Drawing.Color.Wheat
-        Me.tbInformacion.Location = New System.Drawing.Point(219, 7)
+        Me.tbInformacion.ForeColor = System.Drawing.Color.Black
+        Me.tbInformacion.Location = New System.Drawing.Point(219, 8)
         Me.tbInformacion.Name = "tbInformacion"
         Me.tbInformacion.ReadOnly = True
-        Me.tbInformacion.Size = New System.Drawing.Size(138, 146)
+        Me.tbInformacion.Size = New System.Drawing.Size(138, 122)
         Me.tbInformacion.TabIndex = 11
         Me.tbInformacion.Text = ""
         '
@@ -133,7 +139,7 @@ Partial Class Cifrar
         '
         Me.pbImagenCifrada.BackColor = System.Drawing.Color.White
         Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbImagenCifrada.Location = New System.Drawing.Point(366, 8)
+        Me.pbImagenCifrada.Location = New System.Drawing.Point(370, 7)
         Me.pbImagenCifrada.Name = "pbImagenCifrada"
         Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 146)
         Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -143,7 +149,7 @@ Partial Class Cifrar
         'btnGuardar
         '
         Me.btnGuardar.Enabled = False
-        Me.btnGuardar.Location = New System.Drawing.Point(438, 159)
+        Me.btnGuardar.Location = New System.Drawing.Point(442, 159)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(61, 26)
         Me.btnGuardar.TabIndex = 4
@@ -163,7 +169,7 @@ Partial Class Cifrar
         '
         'btnLimpiar
         '
-        Me.btnLimpiar.Location = New System.Drawing.Point(470, 323)
+        Me.btnLimpiar.Location = New System.Drawing.Point(10, 53)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(103, 25)
         Me.btnLimpiar.TabIndex = 25
@@ -172,7 +178,7 @@ Partial Class Cifrar
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(470, 368)
+        Me.btnSalir.Location = New System.Drawing.Point(12, 98)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(103, 25)
         Me.btnSalir.TabIndex = 26
@@ -183,17 +189,17 @@ Partial Class Cifrar
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(31, 20)
+        Me.Label1.Location = New System.Drawing.Point(19, 22)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 16)
+        Me.Label1.Size = New System.Drawing.Size(96, 16)
         Me.Label1.TabIndex = 24
-        Me.Label1.Text = "Clave de Seguridad:"
+        Me.Label1.Text = "Clave Privada:"
         '
         'cbMostrarClave
         '
         Me.cbMostrarClave.AutoSize = True
         Me.cbMostrarClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbMostrarClave.Location = New System.Drawing.Point(44, 45)
+        Me.cbMostrarClave.Location = New System.Drawing.Point(458, 23)
         Me.cbMostrarClave.Name = "cbMostrarClave"
         Me.cbMostrarClave.Size = New System.Drawing.Size(90, 17)
         Me.cbMostrarClave.TabIndex = 23
@@ -203,9 +209,9 @@ Partial Class Cifrar
         'tbClave
         '
         Me.tbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbClave.Location = New System.Drawing.Point(168, 17)
+        Me.tbClave.Location = New System.Drawing.Point(121, 19)
         Me.tbClave.Name = "tbClave"
-        Me.tbClave.Size = New System.Drawing.Size(330, 22)
+        Me.tbClave.Size = New System.Drawing.Size(321, 22)
         Me.tbClave.TabIndex = 21
         Me.tbClave.UseSystemPasswordChar = True
         '
@@ -221,19 +227,50 @@ Partial Class Cifrar
         Me.tbCarga.Size = New System.Drawing.Size(601, 22)
         Me.tbCarga.TabIndex = 20
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.cbMostrarClave)
+        Me.GroupBox1.Controls.Add(Me.tbClave)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 6)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(570, 56)
+        Me.GroupBox1.TabIndex = 29
+        Me.GroupBox1.TabStop = False
+        '
+        'tbTamImagen
+        '
+        Me.tbTamImagen.BackColor = System.Drawing.Color.White
+        Me.tbTamImagen.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.tbTamImagen.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tbTamImagen.ForeColor = System.Drawing.Color.Black
+        Me.tbTamImagen.Location = New System.Drawing.Point(219, 132)
+        Me.tbTamImagen.Name = "tbTamImagen"
+        Me.tbTamImagen.ReadOnly = True
+        Me.tbTamImagen.Size = New System.Drawing.Size(138, 21)
+        Me.tbTamImagen.TabIndex = 12
+        Me.tbTamImagen.Text = ""
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.btnCifrar)
+        Me.GroupBox3.Controls.Add(Me.btnLimpiar)
+        Me.GroupBox3.Controls.Add(Me.btnSalir)
+        Me.GroupBox3.Location = New System.Drawing.Point(460, 274)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(121, 130)
+        Me.GroupBox3.TabIndex = 30
+        Me.GroupBox3.TabStop = False
+        '
         'Cifrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(597, 430)
+        Me.ClientSize = New System.Drawing.Size(597, 435)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.btnCifrar)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.btnLimpiar)
-        Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cbMostrarClave)
-        Me.Controls.Add(Me.tbClave)
         Me.Controls.Add(Me.tbCarga)
         Me.Name = "Cifrar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -243,6 +280,9 @@ Partial Class Cifrar
         Me.Panel1.ResumeLayout(False)
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -266,4 +306,7 @@ Partial Class Cifrar
     Friend WithEvents cbMostrarClave As CheckBox
     Friend WithEvents tbClave As TextBox
     Friend WithEvents tbCarga As TextBox
+    Friend WithEvents tbTamImagen As RichTextBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
 End Class
