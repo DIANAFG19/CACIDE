@@ -16,10 +16,12 @@ Public Class Cifrar
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
+
         Using OpenFileDialog1 As New OpenFileDialog()
             With OpenFileDialog1
                 .CheckFileExists = True
                 .ShowReadOnly = False
+                '.Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
                 .Filter = "Imagen JPG (*.jpg)|*.jpg|Imagen PNG (*.png)|*.png|Imagen BMP (*.bmp)|*.bmp"
                 .FilterIndex = 1
                 If .ShowDialog = DialogResult.OK Then
@@ -30,14 +32,17 @@ Public Class Cifrar
                     tbTamImagen.Refresh()
                     imagen1 = New Bitmap(.FileName)
                     'imagen2 = New Bitmap(.FileName)
+                    '----------------------------
                     imagen2 = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
                     imagen2.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
                     Dim g As Graphics = Graphics.FromImage(imagen2)
                     g.DrawImage(imagen1, 0, 0)
+                    '------------------------
                     imagen2b = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
                     imagen2b.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
                     Dim g2 As Graphics = Graphics.FromImage(imagen2b)
                     g2.DrawImage(imagen1, 0, 0)
+                    '------------------------
                     bitspp1 = imagen1.GetPixelFormatSize(imagen1.PixelFormat)
                     bitspp2 = imagen2.GetPixelFormatSize(imagen2.PixelFormat)
                     If imagen1.Width * imagen1.Width < 100 Then
@@ -46,6 +51,7 @@ Public Class Cifrar
                         If bitspp2 < 24 Then
                             MsgBox("    (" & bitspp2 & " bits por píxel) " & Chr(13) & "    La imagen debe tener, al menos, 24 bpp")
                         Else
+                            ' Mostramos la imagen en el control PictureBox
                             name_img = .FileName
                             nombre = Extraer_nombre_file(.FileName)
                             pbImagen.ImageLocation = .FileName
@@ -54,7 +60,7 @@ Public Class Cifrar
                             tbInformacion.Text = tbInformacion.Text & "Tamaño: " & imagen1.Width & "x" & imagen1.Height & Chr(13)
                             tbInformacion.Text = tbInformacion.Text & "       (" & bitspp1 & " bits/pixel)" & Chr(13)
                             tbInformacion.Text = tbInformacion.Text & "       (" & str_Tamano_file(FileSystem.FileLen(.FileName)) & ")" & Chr(13) & Chr(13)
-                            tbInformacion.Text = tbInformacion.Text & "Capacidad para cifrar:" & Chr(13)
+                            tbInformacion.Text = tbInformacion.Text & "Capacidad para encriptar:" & Chr(13)
                             tbInformacion.Text = tbInformacion.Text & "  Normal: " & str_Tamano_file(Int(3 * (imagen1.Width * imagen1.Height - 21) / 8)) & Chr(13)
                             tbInformacion.Text = tbInformacion.Text & "  Fuerte:   " & str_Tamano_file(Int(1 * (imagen1.Width * imagen1.Height - 21) / 8)) & Chr(13)
                             tbInformacion.SelectionStart = 8
@@ -68,7 +74,8 @@ Public Class Cifrar
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        End
+        Close()
+        Inicio.Show()
     End Sub
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
@@ -92,6 +99,7 @@ Public Class Cifrar
             indice_color = 0
             num_img = 1
             long_datos = 0
+            long_datos = long_datos + 2 + tbTextoCifrar.TextLength  ' en bytes
             indice_datos = 0 ' bytes escritos (sin cabeceras)
             If HaySitio() Then
                 tbCarga.Text = "Encriptando mensaje..."
@@ -103,6 +111,7 @@ Public Class Cifrar
                 clavebis = Modificar_clave(tbClave.Text)
                 indice_clave = 1
                 indice_datos = 0 ' bytes escritos (sin cabeceras)
+                Call Escribir_texto()
                 'MsgBox("num datos=" & long_datos & vbNewLine & "ind_datos=" & indice_datos)
                 pbImagenCifrada.Image = imagen2
                 btnGuardar.Enabled = True
@@ -133,6 +142,11 @@ Public Class Cifrar
             btnCargar.Focus()
             rta = False
         End If
+        If tbTextoCifrar.TextLength = 0 Then
+            mensaje = mensaje & Chr(13) & "  - No hay texto a encriptar"
+            tbTextoCifrar.Focus()
+            rta = False
+        End If
         If Not (rta) Then
             MsgBox(mensaje)
         End If
@@ -140,7 +154,11 @@ Public Class Cifrar
     End Function
 
     Private Function HaySitio() As Boolean
-
+        Dim rta As Boolean = True
+        If ((long_datos - indice_datos) * 8 + 63) > num_pixeles Then
+            rta = False
+        End If
+        Return rta
     End Function
 
     Private Sub Hallar_fecha_hora()
@@ -155,24 +173,21 @@ Public Class Cifrar
 
     Private Sub Hallar_offset()
         Dim i As Integer
-
         offset = 0
         For i = 1 To tbClave.TextLength
             offset = offset + Asc(tbClave.Text.Substring(i - 1, 1)) Mod 20
         Next
         offset = offset Mod 20
-
     End Sub
 
     Private Sub Escribir_cabecera()
         Dim dato1 As Byte = 0
         Dim dato2 As Byte = 0
-
         'MsgBox("F=" & Asc("F"))
         Call Escribir_dato_m1(Asc("F"), 8)
         Call Escribir_dato_m1(Asc("D"), 8)
+        dato1 = dato1 + 1
         Call Escribir_dato_m1(dato1, 2)
-
         dato2 = 0
         If HaySitio() Then
             If num_img > 1 Then
@@ -189,6 +204,21 @@ Public Class Cifrar
         Call Escribir_dato_m1(fh_minuto, 6)
         Call Escribir_dato_m1(fh_segundo, 6)
         Call Escribir_dato_m1(num_img, 8)
+        Call Escribir_dato_m1(0, 1) ' metodo normal
+    End Sub
+
+    Private Sub Escribir_texto()
+        Dim largoH, largoL As Byte
+        Dim i As Integer
+        largoL = tbTextoCifrar.TextLength And &HFF
+        largoH = tbTextoCifrar.TextLength >> 8
+        Call Escribir_dato(largoH)
+        Call Escribir_dato(largoL)
+        indice_datos = indice_datos + 2
+        For i = 1 To tbTextoCifrar.TextLength
+            Call Escribir_dato(Module1.cifrar(Asc(tbTextoCifrar.Text.Substring(i - 1, 1))))
+            indice_datos = indice_datos + 1
+        Next
     End Sub
 
     Private Sub Escribir_dato_m1(ByVal dato As Byte, ByVal nbits As Short)
@@ -229,6 +259,10 @@ Public Class Cifrar
         End If
     End Sub
 
+    Private Sub Escribir_dato(ByVal dato As Byte)
+        Call Escribir_dato_m1(dato, 8)
+    End Sub
+
     Private Sub Reinicio()
         tbTextoCifrar.Text = ""
         tbInformacion.Text = ""
@@ -240,4 +274,7 @@ Public Class Cifrar
         btnGuardar.Enabled = False
     End Sub
 
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
+    End Sub
 End Class
