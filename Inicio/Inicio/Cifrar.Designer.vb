@@ -61,7 +61,7 @@ Partial Class Cifrar
         '
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.tbTextoCifrar)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 265)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 297)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(442, 138)
         Me.GroupBox2.TabIndex = 28
@@ -109,7 +109,7 @@ Partial Class Cifrar
         Me.Panel1.Controls.Add(Me.pbImagen)
         Me.Panel1.Location = New System.Drawing.Point(12, 68)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(573, 191)
+        Me.Panel1.Size = New System.Drawing.Size(573, 233)
         Me.Panel1.TabIndex = 27
         '
         'tbTamImagen
@@ -118,7 +118,7 @@ Partial Class Cifrar
         Me.tbTamImagen.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tbTamImagen.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbTamImagen.ForeColor = System.Drawing.Color.Black
-        Me.tbTamImagen.Location = New System.Drawing.Point(219, 132)
+        Me.tbTamImagen.Location = New System.Drawing.Point(217, 149)
         Me.tbTamImagen.Name = "tbTamImagen"
         Me.tbTamImagen.ReadOnly = True
         Me.tbTamImagen.Size = New System.Drawing.Size(138, 21)
@@ -131,7 +131,7 @@ Partial Class Cifrar
         Me.tbInformacion.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tbInformacion.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbInformacion.ForeColor = System.Drawing.Color.Black
-        Me.tbInformacion.Location = New System.Drawing.Point(219, 8)
+        Me.tbInformacion.Location = New System.Drawing.Point(217, 25)
         Me.tbInformacion.Name = "tbInformacion"
         Me.tbInformacion.ReadOnly = True
         Me.tbInformacion.Size = New System.Drawing.Size(138, 122)
@@ -141,7 +141,7 @@ Partial Class Cifrar
         'btnCargar
         '
         Me.btnCargar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCargar.Location = New System.Drawing.Point(42, 159)
+        Me.btnCargar.Location = New System.Drawing.Point(42, 196)
         Me.btnCargar.Name = "btnCargar"
         Me.btnCargar.Size = New System.Drawing.Size(124, 26)
         Me.btnCargar.TabIndex = 1
@@ -154,7 +154,7 @@ Partial Class Cifrar
         Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pbImagenCifrada.Location = New System.Drawing.Point(370, 7)
         Me.pbImagenCifrada.Name = "pbImagenCifrada"
-        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 146)
+        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 183)
         Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbImagenCifrada.TabIndex = 1
         Me.pbImagenCifrada.TabStop = False
@@ -162,7 +162,7 @@ Partial Class Cifrar
         'btnGuardar
         '
         Me.btnGuardar.Enabled = False
-        Me.btnGuardar.Location = New System.Drawing.Point(442, 159)
+        Me.btnGuardar.Location = New System.Drawing.Point(448, 197)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(61, 26)
         Me.btnGuardar.TabIndex = 4
@@ -175,7 +175,7 @@ Partial Class Cifrar
         Me.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pbImagen.Location = New System.Drawing.Point(7, 7)
         Me.pbImagen.Name = "pbImagen"
-        Me.pbImagen.Size = New System.Drawing.Size(195, 146)
+        Me.pbImagen.Size = New System.Drawing.Size(195, 183)
         Me.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbImagen.TabIndex = 0
         Me.pbImagen.TabStop = False
@@ -234,7 +234,7 @@ Partial Class Cifrar
         Me.tbCarga.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbCarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCarga.ForeColor = System.Drawing.Color.Blue
-        Me.tbCarga.Location = New System.Drawing.Point(-2, 409)
+        Me.tbCarga.Location = New System.Drawing.Point(-4, 441)
         Me.tbCarga.Name = "tbCarga"
         Me.tbCarga.ReadOnly = True
         Me.tbCarga.Size = New System.Drawing.Size(601, 22)
@@ -256,9 +256,9 @@ Partial Class Cifrar
         Me.GroupBox3.Controls.Add(Me.btnCifrar)
         Me.GroupBox3.Controls.Add(Me.btnLimpiar)
         Me.GroupBox3.Controls.Add(Me.btnSalir)
-        Me.GroupBox3.Location = New System.Drawing.Point(460, 274)
+        Me.GroupBox3.Location = New System.Drawing.Point(460, 297)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(121, 130)
+        Me.GroupBox3.Size = New System.Drawing.Size(121, 138)
         Me.GroupBox3.TabIndex = 30
         Me.GroupBox3.TabStop = False
         '
@@ -266,7 +266,7 @@ Partial Class Cifrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(597, 435)
+        Me.ClientSize = New System.Drawing.Size(597, 462)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
