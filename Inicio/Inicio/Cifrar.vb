@@ -275,6 +275,32 @@ Public Class Cifrar
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-
+        Dim saveFileDialog1 As New SaveFileDialog
+        Dim fi As New FileInfo(name_img)
+        Try
+            saveFileDialog1.DefaultExt = "jpg"
+            If estado_PB2 = 2 Then
+                saveFileDialog1.FileName = fi.Name.Substring(0, fi.Name.Length - 4) & "-fd1b"
+            Else
+                saveFileDialog1.FileName = fi.Name.Substring(0, fi.Name.Length - 4) & "-fd1"
+            End If
+            'saveFileDialog1.FileName = fi.Name.Substring(0, fi.Name.Length - 4) & "-fd1"
+            saveFileDialog1.Filter = "Imagen PNG (*.png)|*.png"
+            saveFileDialog1.RestoreDirectory = True
+            saveFileDialog1.Title = "Guardar como..."
+            If (saveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK) Then
+                If estado_PB2 = 2 Then
+                    imagen2b.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png)
+                Else
+                    imagen2.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png)
+                End If
+                'imagen2.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png)
+                name_img2 = saveFileDialog1.FileName
+                tbTamImagen.Text = Extraer_nombre_file(name_img2) & " (" & str_Tamano_file(FileSystem.FileLen(name_img2)) & ")"
+                MsgBox("Imagen guardada", MsgBoxStyle.Information)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class
