@@ -31,6 +31,7 @@ Partial Class Cifrar
         Me.tbTextoCifrar = New System.Windows.Forms.TextBox()
         Me.btnCifrar = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tbTamImagen = New System.Windows.Forms.RichTextBox()
         Me.tbInformacion = New System.Windows.Forms.RichTextBox()
         Me.btnCargar = New System.Windows.Forms.Button()
         Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
@@ -43,7 +44,6 @@ Partial Class Cifrar
         Me.tbClave = New System.Windows.Forms.TextBox()
         Me.tbCarga = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.tbTamImagen = New System.Windows.Forms.RichTextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -111,6 +111,19 @@ Partial Class Cifrar
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(573, 191)
         Me.Panel1.TabIndex = 27
+        '
+        'tbTamImagen
+        '
+        Me.tbTamImagen.BackColor = System.Drawing.Color.White
+        Me.tbTamImagen.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.tbTamImagen.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tbTamImagen.ForeColor = System.Drawing.Color.Black
+        Me.tbTamImagen.Location = New System.Drawing.Point(219, 132)
+        Me.tbTamImagen.Name = "tbTamImagen"
+        Me.tbTamImagen.ReadOnly = True
+        Me.tbTamImagen.Size = New System.Drawing.Size(138, 21)
+        Me.tbTamImagen.TabIndex = 12
+        Me.tbTamImagen.Text = ""
         '
         'tbInformacion
         '
@@ -237,19 +250,6 @@ Partial Class Cifrar
         Me.GroupBox1.Size = New System.Drawing.Size(570, 56)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
-        '
-        'tbTamImagen
-        '
-        Me.tbTamImagen.BackColor = System.Drawing.Color.White
-        Me.tbTamImagen.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.tbTamImagen.Cursor = System.Windows.Forms.Cursors.Default
-        Me.tbTamImagen.ForeColor = System.Drawing.Color.Black
-        Me.tbTamImagen.Location = New System.Drawing.Point(219, 132)
-        Me.tbTamImagen.Name = "tbTamImagen"
-        Me.tbTamImagen.ReadOnly = True
-        Me.tbTamImagen.Size = New System.Drawing.Size(138, 21)
-        Me.tbTamImagen.TabIndex = 12
-        Me.tbTamImagen.Text = ""
         '
         'GroupBox3
         '

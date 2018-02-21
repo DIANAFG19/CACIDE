@@ -16,7 +16,6 @@ Public Class Cifrar
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
-
         Using OpenFileDialog1 As New OpenFileDialog()
             With OpenFileDialog1
                 .CheckFileExists = True
@@ -66,6 +65,179 @@ Public Class Cifrar
                 End If
             End With
         End Using
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        End
+    End Sub
+
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        tbClave.Text = ""
+        tbTextoCifrar.Text = ""
+        tbInformacion.Text = ""
+        pbImagen.ImageLocation = ""
+        pbImagen.Refresh()
+        pbImagenCifrada.ImageLocation = ""
+        tbTamImagen.Text = ""
+        estado_PB2 = 0
+        hallada_img2b = False
+        pbImagenCifrada.Image = Nothing
+        btnGuardar.Enabled = False
+    End Sub
+
+    Private Sub btnCifrar_Click(sender As Object, e As EventArgs) Handles btnCifrar.Click
+        If Comprobar_entrada() Then
+            imagen2 = imagen1.Clone
+            indice_pixel = 1
+            indice_color = 0
+            num_img = 1
+            long_datos = 0
+            indice_datos = 0 ' bytes escritos (sin cabeceras)
+            If HaySitio() Then
+                tbCarga.Text = "Encriptando mensaje..."
+                Cursor = System.Windows.Forms.Cursors.WaitCursor
+                tbCarga.Refresh()
+                Call Hallar_fecha_hora()
+                Call Hallar_offset()
+                Call Escribir_cabecera()
+                clavebis = Modificar_clave(tbClave.Text)
+                indice_clave = 1
+                indice_datos = 0 ' bytes escritos (sin cabeceras)
+                'MsgBox("num datos=" & long_datos & vbNewLine & "ind_datos=" & indice_datos)
+                pbImagenCifrada.Image = imagen2
+                btnGuardar.Enabled = True
+                'btnEnviar.Visible = True
+                'btnEliminar.Visible = True
+                tbCarga.Text = ""
+                Cursor = System.Windows.Forms.Cursors.Default
+                btnGuardar.Focus()
+                estado_PB2 = 1
+                hallada_img2b = False
+            Else
+                MsgBox("La imagen no tiene píxeles suficientes para enviar el mensaje (" & str_Tamano_file(long_datos) & ")", MsgBoxStyle.Exclamation)
+            End If
+        End If
+    End Sub
+
+    Private Function Comprobar_entrada() As Boolean
+        Dim rta As Boolean
+        Dim mensaje As String = "Errores:"
+        rta = True
+        If tbClave.TextLength < 6 Then
+            mensaje = mensaje & Chr(13) & "  - La clave debe de ser al menos de seis caracteres"
+            tbClave.Focus()
+            rta = False
+        End If
+        If pbImagen.ImageLocation = "" Then
+            mensaje = mensaje & Chr(13) & "  - Antes debes cargar una imagen"
+            btnCargar.Focus()
+            rta = False
+        End If
+        If Not (rta) Then
+            MsgBox(mensaje)
+        End If
+        Return rta
+    End Function
+
+    Private Function HaySitio() As Boolean
+
+    End Function
+
+    Private Sub Hallar_fecha_hora()
+        'MsgBox(Today.Year & Today.Month & Today.Day & TimeOfDay.Hour & TimeOfDay.Minute & TimeOfDay.Second)
+        fh_anho = Today.Year - 2000
+        fh_mes = Today.Month
+        fh_dia = Today.Day
+        fh_hora = TimeOfDay.Hour
+        fh_minuto = TimeOfDay.Minute
+        fh_segundo = TimeOfDay.Second
+    End Sub
+
+    Private Sub Hallar_offset()
+        Dim i As Integer
+
+        offset = 0
+        For i = 1 To tbClave.TextLength
+            offset = offset + Asc(tbClave.Text.Substring(i - 1, 1)) Mod 20
+        Next
+        offset = offset Mod 20
+
+    End Sub
+
+    Private Sub Escribir_cabecera()
+        Dim dato1 As Byte = 0
+        Dim dato2 As Byte = 0
+
+        'MsgBox("F=" & Asc("F"))
+        Call Escribir_dato_m1(Asc("F"), 8)
+        Call Escribir_dato_m1(Asc("D"), 8)
+        Call Escribir_dato_m1(dato1, 2)
+
+        dato2 = 0
+        If HaySitio() Then
+            If num_img > 1 Then
+                dato2 = 2
+            End If
+        Else
+            dato2 = 1
+        End If
+        Call Escribir_dato_m1(dato2, 2)
+        Call Escribir_dato_m1(fh_anho, 7)
+        Call Escribir_dato_m1(fh_mes, 4)
+        Call Escribir_dato_m1(fh_dia, 5)
+        Call Escribir_dato_m1(fh_hora, 6)
+        Call Escribir_dato_m1(fh_minuto, 6)
+        Call Escribir_dato_m1(fh_segundo, 6)
+        Call Escribir_dato_m1(num_img, 8)
+    End Sub
+
+    Private Sub Escribir_dato_m1(ByVal dato As Byte, ByVal nbits As Short)
+        Dim i As Short
+        Dim fila, columna As Integer
+        Dim bit As Byte
+        Dim MyColor As Color
+        Dim num_color As Byte
+        If (num_pixeles - indice_pixel) < 3 Then
+            MsgBox("Error: No hay píxeles suficientes")
+            Call Reinicio()
+        Else
+            For i = nbits To 1 Step -1
+                columna = Int((indice_pixel - 1) / imagen1.Width)
+                fila = (indice_pixel - 1) Mod imagen1.Width
+                'MsgBox("fila=" & fila & ", columna=" & columna)
+                bit = GetBit(dato, i)
+                MyColor = imagen2.GetPixel(fila, columna)
+                Select Case indice_color
+                    Case 0
+                        num_color = MyColor.R
+                        PutBit(num_color, 1, bit)
+                        imagen2.SetPixel(fila, columna, Color.FromArgb(num_color, MyColor.G, MyColor.B))
+                        indice_color = indice_color + 1
+                    Case 1
+                        num_color = MyColor.G
+                        PutBit(num_color, 1, bit)
+                        imagen2.SetPixel(fila, columna, Color.FromArgb(MyColor.R, num_color, MyColor.B))
+                        indice_color = indice_color + 1
+                    Case 2
+                        num_color = MyColor.B
+                        PutBit(num_color, 1, bit)
+                        imagen2.SetPixel(fila, columna, Color.FromArgb(MyColor.R, MyColor.G, num_color))
+                        indice_color = 0
+                        indice_pixel = indice_pixel + 1
+                End Select
+            Next
+        End If
+    End Sub
+
+    Private Sub Reinicio()
+        tbTextoCifrar.Text = ""
+        tbInformacion.Text = ""
+        pbImagen.ImageLocation = ""
+        pbImagen.Refresh()
+        pbImagenCifrada.ImageLocation = ""
+        tbTamImagen.Text = ""
+        pbImagenCifrada.Image = Nothing
+        btnGuardar.Enabled = False
     End Sub
 
 End Class
