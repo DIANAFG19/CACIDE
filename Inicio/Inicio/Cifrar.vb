@@ -102,7 +102,7 @@ Public Class Cifrar
             long_datos = long_datos + 2 + tbTextoCifrar.TextLength  ' en bytes
             indice_datos = 0 ' bytes escritos (sin cabeceras)
             If HaySitio() Then
-                tbCarga.Text = "Encriptando mensaje..."
+                tbCarga.Text = "Cifrando mensaje..."
                 Cursor = System.Windows.Forms.Cursors.WaitCursor
                 tbCarga.Refresh()
                 Call Hallar_fecha_hora()

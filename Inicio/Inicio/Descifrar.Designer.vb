@@ -36,7 +36,7 @@ Partial Class Descifrar
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.tbTextoCifrar = New System.Windows.Forms.TextBox()
+        Me.tbTextoCifrado = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -173,7 +173,7 @@ Partial Class Descifrar
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.tbTextoCifrar)
+        Me.GroupBox2.Controls.Add(Me.tbTextoCifrado)
         Me.GroupBox2.Location = New System.Drawing.Point(136, 283)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(369, 138)
@@ -190,15 +190,15 @@ Partial Class Descifrar
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "Texto Descifrado:"
         '
-        'tbTextoCifrar
+        'tbTextoCifrado
         '
-        Me.tbTextoCifrar.AcceptsReturn = True
-        Me.tbTextoCifrar.Location = New System.Drawing.Point(6, 34)
-        Me.tbTextoCifrar.Multiline = True
-        Me.tbTextoCifrar.Name = "tbTextoCifrar"
-        Me.tbTextoCifrar.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.tbTextoCifrar.Size = New System.Drawing.Size(357, 98)
-        Me.tbTextoCifrar.TabIndex = 3
+        Me.tbTextoCifrado.AcceptsReturn = True
+        Me.tbTextoCifrado.Location = New System.Drawing.Point(6, 34)
+        Me.tbTextoCifrado.Multiline = True
+        Me.tbTextoCifrado.Name = "tbTextoCifrado"
+        Me.tbTextoCifrado.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.tbTextoCifrado.Size = New System.Drawing.Size(357, 98)
+        Me.tbTextoCifrado.TabIndex = 3
         '
         'Descifrar
         '
@@ -237,5 +237,5 @@ Partial Class Descifrar
     Friend WithEvents btnSalir As Button
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents tbTextoCifrar As TextBox
+    Friend WithEvents tbTextoCifrado As TextBox
 End Class
