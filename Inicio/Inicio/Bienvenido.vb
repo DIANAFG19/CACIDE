@@ -30,7 +30,13 @@
     End Sub
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
-
+        If tbClave.Text = "Usuario123" Then
+            Cifrar.Show()
+        ElseIf tbClave.Text = "Usuario321" Then
+            Descifrar.Show()
+        Else
+            MessageBox.Show("Lo siento, no cuentas con un certificado de nosotros.")
+        End If
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
