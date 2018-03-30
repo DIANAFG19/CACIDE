@@ -5,14 +5,6 @@ Imports System.IO
 
 Public Class Descifrar
 
-    Private Sub cbMostrarClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbMostrarClave.CheckedChanged
-        If cbMostrarClave.Checked Then
-            tbClave.UseSystemPasswordChar = False
-        Else
-            tbClave.UseSystemPasswordChar = True
-        End If
-    End Sub
-
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim comienzo As Integer
@@ -127,14 +119,13 @@ Public Class Descifrar
 
         indice_pixel = 22 'Despues de la cabecera
         indice_color = 0
-        If tbClave.TextLength = 0 Then
+        If clavePublica = 0 Then
             MsgBox("Introduce la clave ")
-            tbClave.Focus()
         Else
             If multiplicidad > 0 Then
             Else
                 Call Hallar_offset2()
-                clavebis = Modificar_clave(tbClave.Text)
+                clavebis = Modificar_clave(clavePublica)
                 indice_clave = 1
                 If tipo_datos = 1 Or tipo_datos = 3 Then
                     long_texto = Leer_dato()
@@ -162,8 +153,8 @@ Public Class Descifrar
     Private Sub Hallar_offset2()
         Dim i As Integer
         offset = 0
-        For i = 1 To tbClave.TextLength
-            offset = offset + Asc(tbClave.Text.Substring(i - 1, 1)) Mod 20
+        For i = 1 To clavePublica.Length
+            offset = offset + Asc(clavePublica.Substring(i - 1, 1)) Mod 20
         Next
         offset = offset Mod 20
     End Sub
@@ -175,7 +166,6 @@ Public Class Descifrar
     End Function
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
-        tbClave.Text = ""
         tbTextoCifrado.Text = ""
         tbInformacion.Text = ""
         pbImagenCifrada.ImageLocation = ""

@@ -22,10 +22,6 @@ Partial Class Descifrar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbMostrarClave = New System.Windows.Forms.CheckBox()
-        Me.tbClave = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
         Me.tbInformacion = New System.Windows.Forms.RichTextBox()
@@ -37,53 +33,11 @@ Partial Class Descifrar
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tbTextoCifrado = New System.Windows.Forms.TextBox()
-        Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.cbMostrarClave)
-        Me.GroupBox1.Controls.Add(Me.tbClave)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(493, 56)
-        Me.GroupBox1.TabIndex = 30
-        Me.GroupBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 22)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(94, 16)
-        Me.Label1.TabIndex = 24
-        Me.Label1.Text = "Clave Pública:"
-        '
-        'cbMostrarClave
-        '
-        Me.cbMostrarClave.AutoSize = True
-        Me.cbMostrarClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbMostrarClave.Location = New System.Drawing.Point(398, 23)
-        Me.cbMostrarClave.Name = "cbMostrarClave"
-        Me.cbMostrarClave.Size = New System.Drawing.Size(90, 17)
-        Me.cbMostrarClave.TabIndex = 23
-        Me.cbMostrarClave.Text = "Mostrar clave"
-        Me.cbMostrarClave.UseVisualStyleBackColor = True
-        '
-        'tbClave
-        '
-        Me.tbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbClave.Location = New System.Drawing.Point(106, 18)
-        Me.tbClave.Name = "tbClave"
-        Me.tbClave.Size = New System.Drawing.Size(286, 22)
-        Me.tbClave.TabIndex = 21
-        Me.tbClave.UseSystemPasswordChar = True
         '
         'Panel1
         '
@@ -91,7 +45,7 @@ Partial Class Descifrar
         Me.Panel1.Controls.Add(Me.pbImagenCifrada)
         Me.Panel1.Controls.Add(Me.tbInformacion)
         Me.Panel1.Controls.Add(Me.btnCargar)
-        Me.Panel1.Location = New System.Drawing.Point(9, 74)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(496, 201)
         Me.Panel1.TabIndex = 31
@@ -135,7 +89,7 @@ Partial Class Descifrar
         Me.GroupBox3.Controls.Add(Me.btnDescifrar)
         Me.GroupBox3.Controls.Add(Me.btnLimpiar)
         Me.GroupBox3.Controls.Add(Me.btnSalir)
-        Me.GroupBox3.Location = New System.Drawing.Point(9, 283)
+        Me.GroupBox3.Location = New System.Drawing.Point(9, 217)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(121, 138)
         Me.GroupBox3.TabIndex = 32
@@ -174,7 +128,7 @@ Partial Class Descifrar
         '
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.tbTextoCifrado)
-        Me.GroupBox2.Location = New System.Drawing.Point(136, 283)
+        Me.GroupBox2.Location = New System.Drawing.Point(136, 219)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(369, 138)
         Me.GroupBox2.TabIndex = 33
@@ -204,16 +158,13 @@ Partial Class Descifrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(520, 433)
+        Me.ClientSize = New System.Drawing.Size(520, 360)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Descifrar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Descifrar"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
@@ -222,11 +173,6 @@ Partial Class Descifrar
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents cbMostrarClave As CheckBox
-    Friend WithEvents tbClave As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents tbInformacion As RichTextBox
     Friend WithEvents btnCargar As Button
