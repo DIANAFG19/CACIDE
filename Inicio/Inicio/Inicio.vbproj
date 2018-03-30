@@ -72,6 +72,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bienvenido.Designer.vb">
+      <DependentUpon>Bienvenido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Bienvenido.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Cifrar.Designer.vb">
       <DependentUpon>Cifrar.vb</DependentUpon>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Bienvenido.resx">
+      <DependentUpon>Bienvenido.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cifrar.resx">
       <DependentUpon>Cifrar.vb</DependentUpon>
     </EmbeddedResource>
