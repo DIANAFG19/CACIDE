@@ -30,12 +30,20 @@
     End Sub
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
-        If tbClave.Text = clavePrivada Then
-            Cifrar.Show()
-        ElseIf tbClave.Text = clavePublica Then
-            Descifrar.Show()
+        If rbCifrar.Checked Then
+            If tbClave.Text = clavePrivada Then
+                Cifrar.Show()
+            ElseIf tbClave.Text = clavePublica Then
+                MessageBox.Show("Lo siento, ésta clave sólo es para Descifrar.")
+            End If
+        ElseIf rbDescifrar.Checked Then
+            If tbClave.Text = clavePublica Then
+                Descifrar.Show()
+            ElseIf tbClave.Text = clavePrivada Then
+                MessageBox.Show("Lo siento, ésta clave sólo es para Cifrar.")
+            End If
         Else
-            MessageBox.Show("Lo siento, no cuentas con un certificado de nosotros.")
+            MessageBox.Show("Lo siento, ésta clave no existe en el sistema.")
         End If
     End Sub
 

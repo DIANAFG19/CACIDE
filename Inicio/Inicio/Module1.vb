@@ -1,13 +1,16 @@
 ﻿Module Module1
 
+    'Aquí declaramos las claves para poder acceder
+    Public clavePrivada As String = "Usuario123"
+    Public clavePublica As String = "Usuario321"
+
     Public imagen1 As Bitmap
     Public imagen2 As Bitmap
     Public imagen2b As Bitmap
     Public imagen3 As Bitmap
     Public estado_PB2 As Integer
     Public hallada_img2b As Boolean
-    Public clavePrivada As String = "Usuario123"
-    Public clavePublica As String = "Usuario321"
+
     '
     Public name_img As String
     Public name_img2 As String
