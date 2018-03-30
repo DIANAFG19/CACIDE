@@ -170,6 +170,7 @@ Partial Class Bienvenido
         '
         'tbClave
         '
+        Me.tbClave.Enabled = False
         Me.tbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbClave.Location = New System.Drawing.Point(6, 88)
         Me.tbClave.Name = "tbClave"

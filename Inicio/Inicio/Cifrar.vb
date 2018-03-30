@@ -5,14 +5,6 @@ Imports System.IO
 
 Public Class Cifrar
 
-    Private Sub cbMostrarClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbMostrarClave.CheckedChanged
-        If cbMostrarClave.Checked Then
-            tbClave.UseSystemPasswordChar = False
-        Else
-            tbClave.UseSystemPasswordChar = True
-        End If
-    End Sub
-
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
@@ -79,7 +71,6 @@ Public Class Cifrar
     End Sub
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
-        tbClave.Text = ""
         tbTextoCifrar.Text = ""
         tbInformacion.Text = ""
         pbImagen.ImageLocation = ""
@@ -102,13 +93,11 @@ Public Class Cifrar
             long_datos = long_datos + 2 + tbTextoCifrar.TextLength  ' en bytes
             indice_datos = 0 ' bytes escritos (sin cabeceras)
             If HaySitio() Then
-                tbCarga.Text = "Cifrando mensaje..."
                 Cursor = System.Windows.Forms.Cursors.WaitCursor
-                tbCarga.Refresh()
                 Call Hallar_fecha_hora()
                 Call Hallar_offset()
                 Call Escribir_cabecera()
-                clavebis = Modificar_clave(tbClave.Text)
+                clavebis = Modificar_clave(clavePrivada)
                 indice_clave = 1
                 indice_datos = 0 ' bytes escritos (sin cabeceras)
                 Call Escribir_texto()
@@ -117,7 +106,6 @@ Public Class Cifrar
                 btnGuardar.Enabled = True
                 'btnEnviar.Visible = True
                 'btnEliminar.Visible = True
-                tbCarga.Text = ""
                 Cursor = System.Windows.Forms.Cursors.Default
                 btnGuardar.Focus()
                 estado_PB2 = 1
@@ -132,11 +120,7 @@ Public Class Cifrar
         Dim rta As Boolean
         Dim mensaje As String = "Errores:"
         rta = True
-        If tbClave.TextLength < 6 Then
-            mensaje = mensaje & Chr(13) & "  - La clave debe de ser al menos de seis caracteres"
-            tbClave.Focus()
-            rta = False
-        End If
+
         If pbImagen.ImageLocation = "" Then
             mensaje = mensaje & Chr(13) & "  - Antes debes cargar una imagen"
             btnCargar.Focus()
@@ -174,8 +158,8 @@ Public Class Cifrar
     Private Sub Hallar_offset()
         Dim i As Integer
         offset = 0
-        For i = 1 To tbClave.TextLength
-            offset = offset + Asc(tbClave.Text.Substring(i - 1, 1)) Mod 20
+        For i = 1 To clavePrivada.Length
+            offset = offset + Asc(clavePrivada.Substring(i - 1, 1)) Mod 20
         Next
         offset = offset Mod 20
     End Sub
