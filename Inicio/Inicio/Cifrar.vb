@@ -22,18 +22,17 @@ Public Class Cifrar
                     tbTamImagen.Text = ""
                     tbTamImagen.Refresh()
                     imagen1 = New Bitmap(.FileName)
-                    'imagen2 = New Bitmap(.FileName)
-                    '----------------------------
+
                     imagen2 = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
                     imagen2.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
                     Dim g As Graphics = Graphics.FromImage(imagen2)
                     g.DrawImage(imagen1, 0, 0)
-                    '------------------------
+
                     imagen2b = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
                     imagen2b.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
                     Dim g2 As Graphics = Graphics.FromImage(imagen2b)
                     g2.DrawImage(imagen1, 0, 0)
-                    '------------------------
+
                     bitspp1 = imagen1.GetPixelFormatSize(imagen1.PixelFormat)
                     bitspp2 = imagen2.GetPixelFormatSize(imagen2.PixelFormat)
                     If imagen1.Width * imagen1.Width < 100 Then
