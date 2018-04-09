@@ -160,12 +160,12 @@ Partial Class Inicio
         Me.label1.AutoSize = True
         Me.label1.BackColor = System.Drawing.Color.Transparent
         Me.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.label1.Font = New System.Drawing.Font("AR ESSENCE", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label1.Location = New System.Drawing.Point(34, 11)
+        Me.label1.Font = New System.Drawing.Font("AR ESSENCE", 36.0!)
+        Me.label1.Location = New System.Drawing.Point(17, 11)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(271, 58)
+        Me.label1.Size = New System.Drawing.Size(307, 58)
         Me.label1.TabIndex = 21
-        Me.label1.Text = "¡¡BIENVENIDO!!"
+        Me.label1.Text = "CON ALIMENTOS"
         '
         'Inicio
         '

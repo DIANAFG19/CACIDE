@@ -76,7 +76,7 @@ Public Class Inicio
     End Class
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+        Bienvenido.Show()
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click

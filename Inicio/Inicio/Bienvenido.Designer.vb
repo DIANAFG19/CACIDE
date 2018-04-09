@@ -22,54 +22,88 @@ Partial Class Bienvenido
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.btnSalir = New System.Windows.Forms.Button()
-        Me.btnEntrar = New System.Windows.Forms.Button()
+        Me.btnDescifrar = New System.Windows.Forms.Button()
+        Me.btnCifrar = New System.Windows.Forms.Button()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.btnCerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'btnSalir
+        'btnDescifrar
         '
-        Me.btnSalir.BackColor = System.Drawing.Color.OrangeRed
-        Me.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnSalir.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.ForeColor = System.Drawing.Color.Black
-        Me.btnSalir.Location = New System.Drawing.Point(49, 144)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(90, 42)
-        Me.btnSalir.TabIndex = 25
-        Me.btnSalir.Text = "SALIR"
-        Me.btnSalir.UseVisualStyleBackColor = False
+        Me.btnDescifrar.BackColor = System.Drawing.Color.OrangeRed
+        Me.btnDescifrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnDescifrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnDescifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnDescifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDescifrar.ForeColor = System.Drawing.Color.Black
+        Me.btnDescifrar.Location = New System.Drawing.Point(175, 94)
+        Me.btnDescifrar.Name = "btnDescifrar"
+        Me.btnDescifrar.Size = New System.Drawing.Size(90, 42)
+        Me.btnDescifrar.TabIndex = 25
+        Me.btnDescifrar.Text = "DESCIFRAR"
+        Me.btnDescifrar.UseVisualStyleBackColor = False
         '
-        'btnEntrar
+        'btnCifrar
         '
-        Me.btnEntrar.BackColor = System.Drawing.Color.OrangeRed
-        Me.btnEntrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnEntrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEntrar.ForeColor = System.Drawing.Color.Black
-        Me.btnEntrar.Location = New System.Drawing.Point(49, 70)
-        Me.btnEntrar.Name = "btnEntrar"
-        Me.btnEntrar.Size = New System.Drawing.Size(90, 42)
-        Me.btnEntrar.TabIndex = 24
-        Me.btnEntrar.Text = "ENTRAR"
-        Me.btnEntrar.UseVisualStyleBackColor = False
+        Me.btnCifrar.BackColor = System.Drawing.Color.OrangeRed
+        Me.btnCifrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnCifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCifrar.ForeColor = System.Drawing.Color.Black
+        Me.btnCifrar.Location = New System.Drawing.Point(22, 94)
+        Me.btnCifrar.Name = "btnCifrar"
+        Me.btnCifrar.Size = New System.Drawing.Size(90, 42)
+        Me.btnCifrar.TabIndex = 24
+        Me.btnCifrar.Text = "CIFRAR"
+        Me.btnCifrar.UseVisualStyleBackColor = False
+        '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.BackColor = System.Drawing.Color.Transparent
+        Me.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.label1.Font = New System.Drawing.Font("AR ESSENCE", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label1.Location = New System.Drawing.Point(12, 9)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(271, 58)
+        Me.label1.TabIndex = 26
+        Me.label1.Text = "¡¡BIENVENIDO!!"
+        '
+        'btnCerrar
+        '
+        Me.btnCerrar.BackColor = System.Drawing.Color.OrangeRed
+        Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCerrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.ForeColor = System.Drawing.Color.Black
+        Me.btnCerrar.Location = New System.Drawing.Point(79, 162)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(128, 42)
+        Me.btnCerrar.TabIndex = 27
+        Me.btnCerrar.Text = "CERRAR SESIÓN"
+        Me.btnCerrar.UseVisualStyleBackColor = False
         '
         'Bienvenido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 332)
-        Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(Me.btnEntrar)
+        Me.ClientSize = New System.Drawing.Size(299, 216)
+        Me.Controls.Add(Me.btnCerrar)
+        Me.Controls.Add(Me.label1)
+        Me.Controls.Add(Me.btnDescifrar)
+        Me.Controls.Add(Me.btnCifrar)
         Me.Name = "Bienvenido"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Bienvenido"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents btnSalir As Button
-    Friend WithEvents btnEntrar As Button
+    Friend WithEvents btnDescifrar As Button
+    Friend WithEvents btnCifrar As Button
+    Private WithEvents label1 As Label
+    Friend WithEvents btnCerrar As Button
 End Class
