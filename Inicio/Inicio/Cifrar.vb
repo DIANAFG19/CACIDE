@@ -13,8 +13,7 @@ Public Class Cifrar
             With OpenFileDialog1
                 .CheckFileExists = True
                 .ShowReadOnly = False
-                '.Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
-                .Filter = "Imagen JPG (*.jpg)|*.jpg|Imagen PNG (*.png)|*.png|Imagen BMP (*.bmp)|*.bmp"
+                .Filter = "Imagen JPG (*.jpg)|*.jpg|Imagen PNG (*.png)|*.png|Imagen JPEG (*.jpeg)|*.jpeg"
                 .FilterIndex = 1
                 If .ShowDialog = DialogResult.OK Then
                     btnGuardar.Enabled = False
@@ -57,7 +56,7 @@ Public Class Cifrar
                             tbInformacion.Text = tbInformacion.Text & "  Fuerte:   " & str_Tamano_file(Int(1 * (imagen1.Width * imagen1.Height - 21) / 8)) & Chr(13)
                             tbInformacion.SelectionStart = 8
                             tbInformacion.SelectionLength = nombre.Length
-                            tbInformacion.SelectionColor = Color.Blue
+
                         End If
                     End If
                 End If
@@ -286,5 +285,9 @@ Public Class Cifrar
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub btnCargar_Click_1(sender As Object, e As EventArgs)
+
     End Sub
 End Class

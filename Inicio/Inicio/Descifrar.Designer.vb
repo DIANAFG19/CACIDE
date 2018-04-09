@@ -22,44 +22,32 @@ Partial Class Descifrar
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
-        Me.tbInformacion = New System.Windows.Forms.RichTextBox()
         Me.btnCargar = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnDescifrar = New System.Windows.Forms.Button()
-        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.tbInformacion = New System.Windows.Forms.RichTextBox()
+        Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnLimpiar = New System.Windows.Forms.Button()
+        Me.btnDescifrar = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.tbTextoCifrado = New System.Windows.Forms.TextBox()
-        Me.Panel1.SuspendLayout()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Panel1
+        'btnCargar
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.pbImagenCifrada)
-        Me.Panel1.Controls.Add(Me.tbInformacion)
-        Me.Panel1.Controls.Add(Me.btnCargar)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(496, 201)
-        Me.Panel1.TabIndex = 31
-        '
-        'pbImagenCifrada
-        '
-        Me.pbImagenCifrada.BackColor = System.Drawing.Color.White
-        Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbImagenCifrada.Location = New System.Drawing.Point(246, 8)
-        Me.pbImagenCifrada.Name = "pbImagenCifrada"
-        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 183)
-        Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbImagenCifrada.TabIndex = 12
-        Me.pbImagenCifrada.TabStop = False
+        Me.btnCargar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCargar.Location = New System.Drawing.Point(25, 17)
+        Me.btnCargar.Name = "btnCargar"
+        Me.btnCargar.Size = New System.Drawing.Size(124, 26)
+        Me.btnCargar.TabIndex = 1
+        Me.btnCargar.Text = "Cargar Imagen"
+        Me.btnCargar.UseVisualStyleBackColor = True
         '
         'tbInformacion
         '
@@ -74,26 +62,45 @@ Partial Class Descifrar
         Me.tbInformacion.TabIndex = 11
         Me.tbInformacion.Text = ""
         '
-        'btnCargar
+        'pbImagenCifrada
         '
-        Me.btnCargar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCargar.Location = New System.Drawing.Point(25, 17)
-        Me.btnCargar.Name = "btnCargar"
-        Me.btnCargar.Size = New System.Drawing.Size(124, 26)
-        Me.btnCargar.TabIndex = 1
-        Me.btnCargar.Text = "Cargar Imagen"
-        Me.btnCargar.UseVisualStyleBackColor = True
+        Me.pbImagenCifrada.BackColor = System.Drawing.Color.White
+        Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pbImagenCifrada.Location = New System.Drawing.Point(246, 8)
+        Me.pbImagenCifrada.Name = "pbImagenCifrada"
+        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 183)
+        Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbImagenCifrada.TabIndex = 12
+        Me.pbImagenCifrada.TabStop = False
         '
-        'GroupBox3
+        'Panel1
         '
-        Me.GroupBox3.Controls.Add(Me.btnDescifrar)
-        Me.GroupBox3.Controls.Add(Me.btnLimpiar)
-        Me.GroupBox3.Controls.Add(Me.btnSalir)
-        Me.GroupBox3.Location = New System.Drawing.Point(9, 217)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(121, 138)
-        Me.GroupBox3.TabIndex = 32
-        Me.GroupBox3.TabStop = False
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.pbImagenCifrada)
+        Me.Panel1.Controls.Add(Me.tbInformacion)
+        Me.Panel1.Controls.Add(Me.btnCargar)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(496, 201)
+        Me.Panel1.TabIndex = 31
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(10, 94)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(103, 25)
+        Me.btnSalir.TabIndex = 26
+        Me.btnSalir.Text = "Salir"
+        Me.btnSalir.UseVisualStyleBackColor = True
+        '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.Location = New System.Drawing.Point(10, 53)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(103, 25)
+        Me.btnLimpiar.TabIndex = 25
+        Me.btnLimpiar.Text = "Limpiar"
+        Me.btnLimpiar.UseVisualStyleBackColor = True
         '
         'btnDescifrar
         '
@@ -106,33 +113,26 @@ Partial Class Descifrar
         Me.btnDescifrar.Text = "Descifrar"
         Me.btnDescifrar.UseVisualStyleBackColor = False
         '
-        'btnLimpiar
+        'GroupBox3
         '
-        Me.btnLimpiar.Location = New System.Drawing.Point(10, 53)
-        Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(103, 25)
-        Me.btnLimpiar.TabIndex = 25
-        Me.btnLimpiar.Text = "Limpiar"
-        Me.btnLimpiar.UseVisualStyleBackColor = True
+        Me.GroupBox3.Controls.Add(Me.btnDescifrar)
+        Me.GroupBox3.Controls.Add(Me.btnLimpiar)
+        Me.GroupBox3.Controls.Add(Me.btnSalir)
+        Me.GroupBox3.Location = New System.Drawing.Point(9, 217)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(121, 138)
+        Me.GroupBox3.TabIndex = 32
+        Me.GroupBox3.TabStop = False
         '
-        'btnSalir
+        'tbTextoCifrado
         '
-        Me.btnSalir.Location = New System.Drawing.Point(12, 98)
-        Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(103, 25)
-        Me.btnSalir.TabIndex = 26
-        Me.btnSalir.Text = "Salir"
-        Me.btnSalir.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.tbTextoCifrado)
-        Me.GroupBox2.Location = New System.Drawing.Point(136, 219)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(369, 138)
-        Me.GroupBox2.TabIndex = 33
-        Me.GroupBox2.TabStop = False
+        Me.tbTextoCifrado.AcceptsReturn = True
+        Me.tbTextoCifrado.Location = New System.Drawing.Point(6, 34)
+        Me.tbTextoCifrado.Multiline = True
+        Me.tbTextoCifrado.Name = "tbTextoCifrado"
+        Me.tbTextoCifrado.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.tbTextoCifrado.Size = New System.Drawing.Size(357, 98)
+        Me.tbTextoCifrado.TabIndex = 3
         '
         'Label2
         '
@@ -144,15 +144,15 @@ Partial Class Descifrar
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "Texto Descifrado:"
         '
-        'tbTextoCifrado
+        'GroupBox2
         '
-        Me.tbTextoCifrado.AcceptsReturn = True
-        Me.tbTextoCifrado.Location = New System.Drawing.Point(6, 34)
-        Me.tbTextoCifrado.Multiline = True
-        Me.tbTextoCifrado.Name = "tbTextoCifrado"
-        Me.tbTextoCifrado.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.tbTextoCifrado.Size = New System.Drawing.Size(357, 98)
-        Me.tbTextoCifrado.TabIndex = 3
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.tbTextoCifrado)
+        Me.GroupBox2.Location = New System.Drawing.Point(136, 219)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(369, 138)
+        Me.GroupBox2.TabIndex = 33
+        Me.GroupBox2.TabStop = False
         '
         'Descifrar
         '
@@ -165,23 +165,24 @@ Partial Class Descifrar
         Me.Name = "Descifrar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Descifrar"
-        Me.Panel1.ResumeLayout(False)
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents tbInformacion As RichTextBox
+
     Friend WithEvents btnCargar As Button
+    Friend WithEvents tbInformacion As RichTextBox
     Friend WithEvents pbImagenCifrada As PictureBox
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents btnDescifrar As Button
-    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents Panel1 As Panel
     Friend WithEvents btnSalir As Button
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnDescifrar As Button
+    Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents tbTextoCifrado As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents GroupBox2 As GroupBox
 End Class
