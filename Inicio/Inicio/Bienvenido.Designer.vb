@@ -26,14 +26,12 @@ Partial Class Bienvenido
         Me.label1 = New System.Windows.Forms.Label()
         Me.btnEntrar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.labelClave = New System.Windows.Forms.Label()
-        Me.labelPublica = New System.Windows.Forms.Label()
+        Me.tbPass = New System.Windows.Forms.TextBox()
         Me.cbVerClave = New System.Windows.Forms.CheckBox()
         Me.labelPrivada = New System.Windows.Forms.Label()
-        Me.rbDescifrar = New System.Windows.Forms.RadioButton()
-        Me.rbCifrar = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.tbClave = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.tbUsuario = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,7 +43,7 @@ Partial Class Bienvenido
         Me.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnSalir.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalir.ForeColor = System.Drawing.Color.Black
-        Me.btnSalir.Location = New System.Drawing.Point(222, 209)
+        Me.btnSalir.Location = New System.Drawing.Point(201, 256)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(90, 42)
         Me.btnSalir.TabIndex = 16
@@ -58,7 +56,7 @@ Partial Class Bienvenido
         Me.label1.BackColor = System.Drawing.Color.Transparent
         Me.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.label1.Font = New System.Drawing.Font("AR ESSENCE", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label1.Location = New System.Drawing.Point(60, 9)
+        Me.label1.Location = New System.Drawing.Point(40, 9)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(271, 58)
         Me.label1.TabIndex = 13
@@ -72,7 +70,7 @@ Partial Class Bienvenido
         Me.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnEntrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEntrar.ForeColor = System.Drawing.Color.Black
-        Me.btnEntrar.Location = New System.Drawing.Point(72, 209)
+        Me.btnEntrar.Location = New System.Drawing.Point(53, 256)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(90, 42)
         Me.btnEntrar.TabIndex = 14
@@ -81,47 +79,35 @@ Partial Class Bienvenido
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.tbClave)
-        Me.GroupBox1.Controls.Add(Me.labelClave)
-        Me.GroupBox1.Controls.Add(Me.labelPublica)
+        Me.GroupBox1.Controls.Add(Me.tbUsuario)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.tbPass)
         Me.GroupBox1.Controls.Add(Me.cbVerClave)
         Me.GroupBox1.Controls.Add(Me.labelPrivada)
-        Me.GroupBox1.Controls.Add(Me.rbDescifrar)
-        Me.GroupBox1.Controls.Add(Me.rbCifrar)
-        Me.GroupBox1.Location = New System.Drawing.Point(9, 70)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 70)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(367, 125)
+        Me.GroupBox1.Size = New System.Drawing.Size(318, 169)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "¿Qué desea hacer?"
         '
-        'labelClave
+        'tbPass
         '
-        Me.labelClave.AutoSize = True
-        Me.labelClave.Location = New System.Drawing.Point(9, 62)
-        Me.labelClave.Name = "labelClave"
-        Me.labelClave.Size = New System.Drawing.Size(37, 13)
-        Me.labelClave.TabIndex = 7
-        Me.labelClave.Text = "Clave:"
-        Me.labelClave.Visible = False
-        '
-        'labelPublica
-        '
-        Me.labelPublica.AutoSize = True
-        Me.labelPublica.Location = New System.Drawing.Point(8, 62)
-        Me.labelPublica.Name = "labelPublica"
-        Me.labelPublica.Size = New System.Drawing.Size(75, 13)
-        Me.labelPublica.TabIndex = 6
-        Me.labelPublica.Text = "Clave Pública:"
-        Me.labelPublica.Visible = False
+        Me.tbPass.Enabled = False
+        Me.tbPass.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPass.Location = New System.Drawing.Point(9, 100)
+        Me.tbPass.Name = "tbPass"
+        Me.tbPass.Size = New System.Drawing.Size(270, 26)
+        Me.tbPass.TabIndex = 22
+        Me.tbPass.UseSystemPasswordChar = True
         '
         'cbVerClave
         '
         Me.cbVerClave.AutoSize = True
         Me.cbVerClave.Enabled = False
-        Me.cbVerClave.Location = New System.Drawing.Point(280, 92)
+        Me.cbVerClave.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbVerClave.Location = New System.Drawing.Point(12, 132)
         Me.cbVerClave.Name = "cbVerClave"
-        Me.cbVerClave.Size = New System.Drawing.Size(72, 17)
+        Me.cbVerClave.Size = New System.Drawing.Size(102, 23)
         Me.cbVerClave.TabIndex = 5
         Me.cbVerClave.Text = "Ver Clave"
         Me.cbVerClave.UseVisualStyleBackColor = True
@@ -129,54 +115,44 @@ Partial Class Bienvenido
         'labelPrivada
         '
         Me.labelPrivada.AutoSize = True
-        Me.labelPrivada.Location = New System.Drawing.Point(8, 62)
+        Me.labelPrivada.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelPrivada.Location = New System.Drawing.Point(8, 78)
         Me.labelPrivada.Name = "labelPrivada"
-        Me.labelPrivada.Size = New System.Drawing.Size(76, 13)
+        Me.labelPrivada.Size = New System.Drawing.Size(99, 19)
         Me.labelPrivada.TabIndex = 4
-        Me.labelPrivada.Text = "Clave Privada:"
+        Me.labelPrivada.Text = "Contraseña:"
         Me.labelPrivada.Visible = False
-        '
-        'rbDescifrar
-        '
-        Me.rbDescifrar.AutoSize = True
-        Me.rbDescifrar.Location = New System.Drawing.Point(183, 31)
-        Me.rbDescifrar.Name = "rbDescifrar"
-        Me.rbDescifrar.Size = New System.Drawing.Size(67, 17)
-        Me.rbDescifrar.TabIndex = 1
-        Me.rbDescifrar.TabStop = True
-        Me.rbDescifrar.Text = "Descifrar"
-        Me.rbDescifrar.UseVisualStyleBackColor = True
-        '
-        'rbCifrar
-        '
-        Me.rbCifrar.AutoSize = True
-        Me.rbCifrar.Location = New System.Drawing.Point(78, 31)
-        Me.rbCifrar.Name = "rbCifrar"
-        Me.rbCifrar.Size = New System.Drawing.Size(49, 17)
-        Me.rbCifrar.TabIndex = 0
-        Me.rbCifrar.TabStop = True
-        Me.rbCifrar.Text = "Cifrar"
-        Me.rbCifrar.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 278)
+        Me.Label2.Location = New System.Drawing.Point(3, 322)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(347, 26)
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "NOTA: Sólo tienes tres intentos para poder ingresar, después de estos,  " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "se desh" &
     "abilitará todo el formulario y tendras que reiniciar el ejecutable."
         '
-        'tbClave
+        'Label3
         '
-        Me.tbClave.Enabled = False
-        Me.tbClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbClave.Location = New System.Drawing.Point(6, 88)
-        Me.tbClave.Name = "tbClave"
-        Me.tbClave.Size = New System.Drawing.Size(268, 22)
-        Me.tbClave.TabIndex = 22
-        Me.tbClave.UseSystemPasswordChar = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 22)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(70, 19)
+        Me.Label3.TabIndex = 23
+        Me.Label3.Text = "Usuario:"
+        Me.Label3.Visible = False
+        '
+        'tbUsuario
+        '
+        Me.tbUsuario.Enabled = False
+        Me.tbUsuario.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbUsuario.Location = New System.Drawing.Point(11, 44)
+        Me.tbUsuario.Name = "tbUsuario"
+        Me.tbUsuario.Size = New System.Drawing.Size(268, 26)
+        Me.tbUsuario.TabIndex = 24
+        Me.tbUsuario.UseSystemPasswordChar = True
         '
         'Bienvenido
         '
@@ -184,7 +160,7 @@ Partial Class Bienvenido
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnSalir
-        Me.ClientSize = New System.Drawing.Size(384, 313)
+        Me.ClientSize = New System.Drawing.Size(346, 348)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnSalir)
@@ -207,10 +183,8 @@ Partial Class Bienvenido
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents cbVerClave As CheckBox
     Friend WithEvents labelPrivada As Label
-    Friend WithEvents rbDescifrar As RadioButton
-    Friend WithEvents rbCifrar As RadioButton
-    Friend WithEvents labelClave As Label
-    Friend WithEvents labelPublica As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents tbClave As TextBox
+    Friend WithEvents tbPass As TextBox
+    Friend WithEvents tbUsuario As TextBox
+    Friend WithEvents Label3 As Label
 End Class

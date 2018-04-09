@@ -1,54 +1,64 @@
-﻿Public Class Bienvenido
-    Private Sub rbCifrar_CheckedChanged(sender As Object, e As EventArgs) Handles rbCifrar.CheckedChanged
-        labelClave.Visible = False
-        labelPrivada.Visible = True
-        labelPublica.Visible = False
-        tbClave.Enabled = True
-        cbVerClave.Enabled = True
-        btnEntrar.Enabled = True
-    End Sub
+﻿Imports MySql.Data.MySqlClient 'Conectar a la base de datos (certificados digitales).
 
-    Private Sub rbDescifrar_CheckedChanged(sender As Object, e As EventArgs) Handles rbDescifrar.CheckedChanged
-        labelClave.Visible = False
-        labelPrivada.Visible = False
-        labelPublica.Visible = True
-        tbClave.Enabled = True
-        cbVerClave.Enabled = True
-        btnEntrar.Enabled = True
-    End Sub
+Public Class Bienvenido
 
-    Private Sub tbClave_TextChanged(sender As Object, e As EventArgs)
+    Dim adaptador As New MySqlDataAdapter
+    Dim datos As DataSet
+    Dim conn As New MySqlConnection
 
-    End Sub
+    Public intentos As Int16 = 1
+    Public usuario As String
 
     Private Sub cbVerClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbVerClave.CheckedChanged
         If cbVerClave.Checked Then
-            tbClave.UseSystemPasswordChar = False
+            tbPass.UseSystemPasswordChar = False
         Else
-            tbClave.UseSystemPasswordChar = True
+            tbPass.UseSystemPasswordChar = True
         End If
     End Sub
 
     Private Sub btnEntrar_Click(sender As Object, e As EventArgs) Handles btnEntrar.Click
-        If rbCifrar.Checked Then
-            If tbClave.Text = clavePrivada Then
-                Cifrar.Show()
-            ElseIf tbClave.Text = clavePublica Then
-                MessageBox.Show("Lo siento, ésta clave sólo es para Descifrar.")
+        If intentos < 3 Then
+            usuario = tbUsuario.Text
+            Dim contras As String = tbPass.Text
+            If usuario <> "" And contras <> "" Then
+                Ingreso(usuario, contras)
+            Else
+
             End If
-        ElseIf rbDescifrar.Checked Then
-            If tbClave.Text = clavePublica Then
-                Descifrar.Show()
-            ElseIf tbClave.Text = clavePrivada Then
-                MessageBox.Show("Lo siento, ésta clave sólo es para Cifrar.")
-            End If
-        Else
-            MessageBox.Show("Lo siento, ésta clave no existe en el sistema.")
+
         End If
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
     End Sub
+
+    Public Sub Ingreso(usuario As String, contra As String)
+        Dim consulta As String
+        Dim lista As Byte
+        Try
+            'Conexión a la base de datos.
+            Dim conexion As String = "server=198.91.81.6;database=sicudex1_conAlimentos; user id=sicudex1_DianaFG;password=dianafg123;port=3306"
+            'Abrimos la Base de datos
+            conn.Open()
+            consulta = "SELECT * FROM usuario WHERE usuario = '" & usuario & "' AND clavePrivada = '" & contra & "'"
+            adaptador = New MySqlDataAdapter(consulta, conexion)
+            datos = New DataSet
+            adaptador.Fill(datos, "usuario")
+            lista = datos.Tables("usuario").Rows.Count
+
+            If lista <> 0 Then
+                MsgBox("Ingreso correcto")
+                Cifrar.Show()
+            Else
+                MsgBox("Usuario no encontrado")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
 
 End Class
