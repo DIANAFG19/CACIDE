@@ -26,6 +26,7 @@ Partial Class Bienvenido
         Me.btnCifrar = New System.Windows.Forms.Button()
         Me.label1 = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.btnPerfil = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnDescifrar
@@ -77,18 +78,35 @@ Partial Class Bienvenido
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCerrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrar.ForeColor = System.Drawing.Color.Black
-        Me.btnCerrar.Location = New System.Drawing.Point(79, 162)
+        Me.btnCerrar.Location = New System.Drawing.Point(155, 162)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(128, 42)
         Me.btnCerrar.TabIndex = 27
         Me.btnCerrar.Text = "CERRAR SESIÓN"
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
+        'btnPerfil
+        '
+        Me.btnPerfil.BackColor = System.Drawing.Color.OrangeRed
+        Me.btnPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnPerfil.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPerfil.ForeColor = System.Drawing.Color.Black
+        Me.btnPerfil.Location = New System.Drawing.Point(22, 162)
+        Me.btnPerfil.Name = "btnPerfil"
+        Me.btnPerfil.Size = New System.Drawing.Size(90, 42)
+        Me.btnPerfil.TabIndex = 28
+        Me.btnPerfil.Text = "MI PERFIL"
+        Me.btnPerfil.UseVisualStyleBackColor = False
+        '
         'Bienvenido
         '
+        Me.AcceptButton = Me.btnCifrar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(299, 216)
+        Me.CancelButton = Me.btnCerrar
+        Me.ClientSize = New System.Drawing.Size(312, 216)
+        Me.Controls.Add(Me.btnPerfil)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.label1)
         Me.Controls.Add(Me.btnDescifrar)
@@ -106,4 +124,5 @@ Partial Class Bienvenido
     Friend WithEvents btnCifrar As Button
     Private WithEvents label1 As Label
     Friend WithEvents btnCerrar As Button
+    Friend WithEvents btnPerfil As Button
 End Class

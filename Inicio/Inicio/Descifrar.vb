@@ -20,14 +20,14 @@ Public Class Descifrar
                     ' Mostramos la imagen en el control PictureBox
                     pbImagenCifrada.ImageLocation = .FileName
                     imagen3 = New Bitmap(.FileName)
-                    nombre = Extraer_nombre_file(.FileName)
-                    num_pixeles = imagen3.Width * imagen3.Height
+                    nombre = ExtraerNombre(.FileName)
+                    numPixImg = imagen3.Width * imagen3.Height
                     tbInformacion.Text = "Nombre: " & nombre
                     tbInformacion.Text = tbInformacion.Text & vbNewLine & "Tamaño: " & imagen3.Width & "x" & imagen3.Height & Chr(13) & Chr(13)
                     tbInformacion.Text = tbInformacion.Text & "Información cifrada:"
                     comienzo = tbInformacion.TextLength
-                    indice_pixel = 1
-                    indice_color = 0
+                    indicePixel = 1
+                    indiceColor = 0
                     Call Leer_cabecera()
                     If tipo_datos = 0 Then
                         tbInformacion.Text = tbInformacion.Text & vbNewLine & "   No hay información cifrada"
@@ -83,28 +83,28 @@ Public Class Descifrar
         Dim MyColor As Color
         Dim rta As Byte = 0
 
-        If (num_pixeles - indice_pixel) < 3 Then
+        If (numPixImg - indicePixel) < 3 Then
             '.....
             '....
         Else
             For i = nbits To 1 Step -1
-                columna = Int((indice_pixel - 1) / imagen3.Width)
-                fila = (indice_pixel - 1) Mod imagen3.Width
+                columna = Int((indicePixel - 1) / imagen3.Width)
+                fila = (indicePixel - 1) Mod imagen3.Width
                 MyColor = imagen3.GetPixel(fila, columna)
-                Select Case indice_color
+                Select Case indiceColor
                     Case 0
                         bit = GetBit(MyColor.R, 1)
                         PutBit(rta, i, bit)
-                        indice_color = indice_color + 1
+                        indiceColor = indiceColor + 1
                     Case 1
                         bit = GetBit(MyColor.G, 1)
                         PutBit(rta, i, bit)
-                        indice_color = indice_color + 1
+                        indiceColor = indiceColor + 1
                     Case 2
                         bit = GetBit(MyColor.B, 1)
                         PutBit(rta, i, bit)
-                        indice_color = 0
-                        indice_pixel = indice_pixel + 1
+                        indiceColor = 0
+                        indicePixel = indicePixel + 1
                 End Select
             Next
         End If
@@ -117,8 +117,8 @@ Public Class Descifrar
         Dim texto As String = ""
         Dim num_files As Integer
 
-        indice_pixel = 22 'Despues de la cabecera
-        indice_color = 0
+        indicePixel = 22 'Despues de la cabecera
+        indiceColor = 0
         If clavePublica = 0 Then
             MsgBox("Introduce la clave ")
         Else
@@ -170,8 +170,8 @@ Public Class Descifrar
         tbInformacion.Text = ""
         pbImagenCifrada.ImageLocation = ""
         pbImagenCifrada.Refresh()
-        estado_PB2 = 0
-        hallada_img2b = False
+        'estado_PB2 = 0
+        'hallada_img2b = False
         pbImagenCifrada.Image = Nothing
         btnDescifrar.Enabled = False
     End Sub
