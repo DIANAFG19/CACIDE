@@ -8,40 +8,41 @@ Public Class Cifrar
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
-
+        'Nos permitirá abrir una imagen desde la PC
         Using OpenFileDialog1 As New OpenFileDialog()
             With OpenFileDialog1
                 .CheckFileExists = True
                 .ShowReadOnly = False
+                'Permite imagénes del tipo JPG, PNG o JPEG
                 .Filter = "Imagen JPG (*.jpg)|*.jpg|Imagen PNG (*.png)|*.png|Imagen JPEG (*.jpeg)|*.jpeg"
                 .FilterIndex = 1
                 If .ShowDialog = DialogResult.OK Then
+                    'Cuando muestre la imagen, habilitamos lo siguiente:
                     btnGuardar.Enabled = False
                     pbImagenCifrada.Image = Nothing
                     tbTextoCifrar.Text = ""
                     tbTamImagen.Text = ""
                     tbTamImagen.Refresh()
+                    'Creamos un bitmap para la imagen
                     imagen1 = New Bitmap(.FileName)
-
+                    'El segundo bitmap contendra información de la imagen
                     imagen2 = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
                     imagen2.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
+                    'Convertimos a la imagen en un grafico
                     Dim g As Graphics = Graphics.FromImage(imagen2)
                     g.DrawImage(imagen1, 0, 0)
-
-                    imagen2b = New Bitmap(imagen1.Width, imagen1.Height, PixelFormat.Format24bppRgb)
-                    imagen2b.SetResolution(imagen1.HorizontalResolution, imagen1.VerticalResolution)
-                    Dim g2 As Graphics = Graphics.FromImage(imagen2b)
-                    g2.DrawImage(imagen1, 0, 0)
-
+                    'Tomamos los pixeles de las imagenes (imagen original vs imagen dibujada).
                     bitspp1 = imagen1.GetPixelFormatSize(imagen1.PixelFormat)
                     bitspp2 = imagen2.GetPixelFormatSize(imagen2.PixelFormat)
+                    'La imagen debe tener minimo 100 píxeles de area para poder cifrar.
                     If imagen1.Width * imagen1.Width < 100 Then
                         MsgBox("Error: " & Chr(13) & "    La imagen tiene muy pocos píxeles")
                     Else
+                        'La imagen debe tener al menos de 24 pixeles.
                         If bitspp2 < 24 Then
-                            MsgBox("    (" & bitspp2 & " bits por píxel) " & Chr(13) & "    La imagen debe tener, al menos, 24 bpp")
+                            MsgBox("    (" & bitspp2 & " bits por píxel) " & Chr(13) & "    La imagen debe tener minimo 24 bits por pixel para poder cifrar.")
                         Else
-                            ' Mostramos la imagen en el control PictureBox
+                            ' Mostramos un poco de información de la imagen.
                             name_img = .FileName
                             nombre = Extraer_nombre_file(.FileName)
                             pbImagen.ImageLocation = .FileName

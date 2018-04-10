@@ -22,8 +22,6 @@ Partial Class Inicio
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tbUsuario = New System.Windows.Forms.TextBox()
@@ -36,24 +34,6 @@ Partial Class Inicio
         Me.label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(348, 162)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 27
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(348, 117)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 26
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -82,9 +62,10 @@ Partial Class Inicio
         '
         Me.tbUsuario.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbUsuario.Location = New System.Drawing.Point(9, 45)
+        Me.tbUsuario.MaxLength = 15
         Me.tbUsuario.Name = "tbUsuario"
         Me.tbUsuario.Size = New System.Drawing.Size(270, 26)
-        Me.tbUsuario.TabIndex = 24
+        Me.tbUsuario.TabIndex = 0
         '
         'Label3
         '
@@ -100,9 +81,10 @@ Partial Class Inicio
         '
         Me.tbPass.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPass.Location = New System.Drawing.Point(9, 100)
+        Me.tbPass.MaxLength = 20
         Me.tbPass.Name = "tbPass"
         Me.tbPass.Size = New System.Drawing.Size(270, 26)
-        Me.tbPass.TabIndex = 22
+        Me.tbPass.TabIndex = 1
         Me.tbPass.UseSystemPasswordChar = True
         '
         'cbVerClave
@@ -112,7 +94,7 @@ Partial Class Inicio
         Me.cbVerClave.Location = New System.Drawing.Point(12, 132)
         Me.cbVerClave.Name = "cbVerClave"
         Me.cbVerClave.Size = New System.Drawing.Size(102, 23)
-        Me.cbVerClave.TabIndex = 5
+        Me.cbVerClave.TabIndex = 2
         Me.cbVerClave.Text = "Ver Clave"
         Me.cbVerClave.UseVisualStyleBackColor = True
         '
@@ -137,7 +119,7 @@ Partial Class Inicio
         Me.btnSalir.Location = New System.Drawing.Point(192, 247)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(90, 42)
-        Me.btnSalir.TabIndex = 23
+        Me.btnSalir.TabIndex = 4
         Me.btnSalir.Text = "SALIR"
         Me.btnSalir.UseVisualStyleBackColor = False
         '
@@ -151,7 +133,7 @@ Partial Class Inicio
         Me.btnEntrar.Location = New System.Drawing.Point(44, 247)
         Me.btnEntrar.Name = "btnEntrar"
         Me.btnEntrar.Size = New System.Drawing.Size(90, 42)
-        Me.btnEntrar.TabIndex = 22
+        Me.btnEntrar.TabIndex = 3
         Me.btnEntrar.Text = "ENTRAR"
         Me.btnEntrar.UseVisualStyleBackColor = False
         '
@@ -169,11 +151,11 @@ Partial Class Inicio
         '
         'Inicio
         '
+        Me.AcceptButton = Me.btnEntrar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(430, 334)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.CancelButton = Me.btnSalir
+        Me.ClientSize = New System.Drawing.Size(337, 334)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnSalir)
@@ -189,9 +171,6 @@ Partial Class Inicio
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents tbUsuario As TextBox

@@ -1,8 +1,22 @@
 ﻿Module Module1
 
-    'Aquí declaramos las claves para poder acceder
-    Public clavePrivada As String = "Usuario123"
-    Public clavePublica As String = "Usuario321"
+    'Aquí declaramos a dos usuario para poder acceder
+    Public nombre As String = "Esteban Perez Hernandez"
+    Public user As String = "EstebanPeHe"
+    Public responsable As String = "Ing. Juan Navarrete Martinez"
+    Public empresa As String = "Con Alimentos"
+    Public vigencia As String = "09/04/2019"
+    Public clavePrivada As String = "EstebanPH"
+    Public clavePublica As String = "MonicaOS"
+
+    Public nombre2 As String = "Monica Osorio Soto"
+    Public user2 As String = "MonicaOsSo"
+    Public responsable2 As String = "Ing. Veronica Capdeville Sosa"
+    Public empresa2 As String = "Con Alimentos"
+    Public vigencia2 As String = "10/12/2018"
+    Public clavePrivada2 As String = "MonicaOS"
+    Public clavePublica2 As String = "EstebanPH"
+
 
     Public imagen1 As Bitmap
     Public imagen2 As Bitmap

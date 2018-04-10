@@ -36,7 +36,7 @@ Partial Class Bienvenido
         Me.btnDescifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnDescifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDescifrar.ForeColor = System.Drawing.Color.Black
-        Me.btnDescifrar.Location = New System.Drawing.Point(175, 94)
+        Me.btnDescifrar.Location = New System.Drawing.Point(176, 87)
         Me.btnDescifrar.Name = "btnDescifrar"
         Me.btnDescifrar.Size = New System.Drawing.Size(90, 42)
         Me.btnDescifrar.TabIndex = 25
@@ -50,7 +50,7 @@ Partial Class Bienvenido
         Me.btnCifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.btnCifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCifrar.ForeColor = System.Drawing.Color.Black
-        Me.btnCifrar.Location = New System.Drawing.Point(22, 94)
+        Me.btnCifrar.Location = New System.Drawing.Point(23, 87)
         Me.btnCifrar.Name = "btnCifrar"
         Me.btnCifrar.Size = New System.Drawing.Size(90, 42)
         Me.btnCifrar.TabIndex = 24
