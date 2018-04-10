@@ -30,6 +30,10 @@
     Public longDatos As Long = 0
     Public indiceDatos As Long = 0
 
+    'Variables que se usan dentro del cifrado.
+    Public claveCambio As String
+    Public indiceClave As Integer
+
     'Método para obtener el nombre de la imagen y poder mostrarlo.
     Public Function ExtraerNombre(ByRef ruta As String) As String
         Dim i As Integer
@@ -40,6 +44,48 @@
             End If
         Next
         rta = ruta.Substring(i + 1, ruta.Length - i - 1)
+        Return rta
+    End Function
+
+    'Método para cifrar la clave dentro de la imagen jutno con el texto
+    Public Function ModificarClave(ByRef clave As String) As String
+        Dim clave2 As String = ""
+        Dim clave3 As String = ""
+        Dim i As Integer
+        For i = 1 To Int(clave.Length / 2)
+            clave2 = clave2 + clave.Substring(Int(clave.Length / 2) - i, 1)
+        Next
+        If (clave.Length / 2) <> Int(clave.Length / 2) Then
+            clave2 = clave2 + clave.Substring(Int(clave.Length / 2), 1)
+        End If
+        For i = clave.Length - 1 To Int((clave.Length + 1) / 2) Step -1
+            clave2 = clave2 + clave.Substring(i, 1)
+        Next
+        For i = 1 To clave2.Length
+            Select Case (i Mod 3)
+                Case 0
+                    clave3 = clave3 + clave2.Substring(i - 1, 1)
+                Case 1
+                    clave3 = clave3 + clave2.Substring(i - 1, 1)
+                Case 2
+                    clave3 = clave3 + clave2.Substring(i - 1, 1)
+            End Select
+        Next
+        Return clave3
+    End Function
+
+    '
+    Public Function tamanoImg(ByVal largo As Long) As String
+        Dim rta As String = ""
+        If (largo / 1024) > 1024 Then
+            rta = Math.Round(((largo / 1024) / 1024), 2).ToString() & " Mb"
+        Else
+            If (largo / 1024) > 1 Then
+                rta = Math.Round((largo / 1024), 2).ToString() & " KB"
+            Else
+                rta = largo & " Bytes"
+            End If
+        End If
         Return rta
     End Function
 
@@ -66,8 +112,7 @@
 
 
 
-    Public clavebis As String
-    Public indice_clave As Integer
+
     ' Fecha y hora
     Public fh_anho As Byte
     Public fh_mes As Byte
@@ -110,45 +155,21 @@
         End If
     End Sub
 
-    Public Function Modificar_clave(ByRef clave As String) As String
-        Dim clave2 As String = ""
-        Dim clave3 As String = ""
-        Dim i As Integer
-        For i = 1 To Int(clave.Length / 2)
-            clave2 = clave2 + clave.Substring(Int(clave.Length / 2) - i, 1)
-        Next
-        If (clave.Length / 2) <> Int(clave.Length / 2) Then
-            clave2 = clave2 + clave.Substring(Int(clave.Length / 2), 1)
-        End If
-        For i = clave.Length - 1 To Int((clave.Length + 1) / 2) Step -1
-            clave2 = clave2 + clave.Substring(i, 1)
-        Next
-        For i = 1 To clave2.Length
-            Select Case (i Mod 3)
-                Case 0
-                    clave3 = clave3 + clave2.Substring(i - 1, 1)
-                Case 1
-                    clave3 = clave3 + clave2.Substring(i - 1, 1)
-                Case 2
-                    clave3 = clave3 + clave2.Substring(i - 1, 1)
-            End Select
-        Next
-        Return clave3
-    End Function
+
 
     Public Function cifrar(ByVal octeto As Byte) As Byte
         Dim rta As Byte
-        rta = octeto Xor Asc(clavebis.Substring(indice_clave - 1, 1))
+        rta = octeto Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
         IntercambiarBits(rta, 1, 4)
         IntercambiarBits(rta, 2, 3)
         IntercambiarBits(rta, 5, 8)
         IntercambiarBits(rta, 6, 7)
         IntercambiarBits(rta, 3, 6)
         rta = Complemento(rta)
-        If indice_clave = clavebis.Length Then
-            indice_clave = 1
+        If indiceClave = claveCambio.Length Then
+            indiceClave = 1
         Else
-            indice_clave = indice_clave + 1
+            indiceClave = indiceClave + 1
         End If
         Return rta
 
@@ -173,29 +194,17 @@
         IntercambiarBits(rta, 5, 8)
         IntercambiarBits(rta, 2, 3)
         IntercambiarBits(rta, 1, 4)
-        rta = rta Xor Asc(clavebis.Substring(indice_clave - 1, 1))
+        rta = rta Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
 
-        If indice_clave = clavebis.Length Then
-            indice_clave = 1
+        If indiceClave = claveCambio.Length Then
+            indiceClave = 1
         Else
-            indice_clave = indice_clave + 1
+            indiceClave = indiceClave + 1
         End If
         Return rta
 
     End Function
 
 
-    Public Function str_Tamano_file(ByVal largo As Long) As String
-        Dim rta As String = ""
-        If (largo / 1024) > 1024 Then
-            rta = Math.Round(((largo / 1024) / 1024), 2).ToString() & " Mb"
-        Else
-            If (largo / 1024) > 1 Then
-                rta = Math.Round((largo / 1024), 2).ToString() & " KB"
-            Else
-                rta = largo & " Bytes"
-            End If
-        End If
-        Return rta
-    End Function
+
 End Module

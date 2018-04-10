@@ -61,32 +61,31 @@ Public Class Cifrar
         If ComprobarCampos() Then
             'Clonamos la imagen uno (la imagen 2 es la que se va a cifrar).
             imagen2 = imagen1.Clone
-            'indicePixel = 1
-            'indiceColor = 0
             'Tomamos los carácteres del texto que se va a cifrar.
             longDatos = longDatos + 2 + tbTextoCifrar.TextLength
-            'indiceDatos = 0
             'Verificamos que el texto cabe dentro de la imagen, según los pixeles.
             If PuedeCifrar() Then
                 Cursor = System.Windows.Forms.Cursors.WaitCursor
-                'Call Hallar_fecha_hora()
-                'Call Hallar_offset()
-                'Call Escribir_cabecera()
-                clavebis = Modificar_clave(claveGeneral)
-                indice_clave = 1
+                'Cifrar con la fecha y hora
+                Call ConFechaHora()
+                'Cifrar con la clave publica
+                Call ConClave()
+                'Complemntar con dos letras que nos ayudan a trabajar sobre el cifrado.
+                Call ConComplemento()
+                'Auí se modificará la clave para el cifrado.
+                claveCambio = ModificarClave(claveGeneral)
+                indiceClave = 1
                 indiceDatos = 0 ' bytes escritos (sin cabeceras)
-                Call Escribir_texto()
-                'MsgBox("num datos=" & long_datos & vbNewLine & "ind_datos=" & indice_datos)
+                'Escribimos el texto dentro de la imagen
+                Call EscribirTexto()
+                'Mostramos la imagen ya cifrada
                 pbImagenCifrada.Image = imagen2
                 btnGuardar.Enabled = True
-                'btnEnviar.Visible = True
-                'btnEliminar.Visible = True
                 Cursor = System.Windows.Forms.Cursors.Default
                 btnGuardar.Focus()
-                'estado_PB2 = 1
-                'hallada_img2b = False
             Else
-                MsgBox("La imagen no tiene píxeles suficientes para enviar el mensaje (" & str_Tamano_file(longDatos) & ")", MsgBoxStyle.Exclamation)
+                'En caso de no cumplir con el tamaño, mandar un mensaje de error.
+                MsgBox("La imagen no tiene píxeles suficientes para enviar el mensaje (" & tamanoImg(longDatos) & ")", MsgBoxStyle.Exclamation)
             End If
         End If
     End Sub
@@ -172,7 +171,7 @@ Public Class Cifrar
 
 
 
-    Private Sub Hallar_offset()
+    Private Sub ConClave()
         Dim i As Integer
         offset = 0
         For i = 1 To claveGeneral.Length
@@ -181,7 +180,7 @@ Public Class Cifrar
         offset = offset Mod 20
     End Sub
 
-    Private Sub Hallar_fecha_hora()
+    Private Sub ConFechaHora()
         'MsgBox(Today.Year & Today.Month & Today.Day & TimeOfDay.Hour & TimeOfDay.Minute & TimeOfDay.Second)
         fh_anho = Today.Year - 2000
         fh_mes = Today.Month
@@ -191,7 +190,7 @@ Public Class Cifrar
         fh_segundo = TimeOfDay.Second
     End Sub
 
-    Private Sub Escribir_cabecera()
+    Private Sub ConComplemento()
         Dim dato1 As Byte = 0
         Dim dato2 As Byte = 0
         'MsgBox("F=" & Asc("F"))
@@ -220,7 +219,7 @@ Public Class Cifrar
 
 
 
-    Private Sub Escribir_texto()
+    Private Sub EscribirTexto()
         Dim largoH, largoL As Byte
         Dim i As Integer
         largoL = tbTextoCifrar.TextLength And &HFF

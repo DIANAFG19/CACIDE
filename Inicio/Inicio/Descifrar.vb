@@ -119,14 +119,14 @@ Public Class Descifrar
 
         indicePixel = 22 'Despues de la cabecera
         indiceColor = 0
-        If clavePublica = 0 Then
+        If claveGeneral = 0 Then
             MsgBox("Introduce la clave ")
         Else
             If multiplicidad > 0 Then
             Else
                 Call Hallar_offset2()
-                clavebis = Modificar_clave(clavePublica)
-                indice_clave = 1
+                claveCambio = ModificarClave(claveGeneral)
+                indiceClave = 1
                 If tipo_datos = 1 Or tipo_datos = 3 Then
                     long_texto = Leer_dato()
                     octetoL = Leer_dato()
