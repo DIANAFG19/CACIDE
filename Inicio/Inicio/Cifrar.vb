@@ -112,7 +112,7 @@ Public Class Cifrar
                 End If
                 'imagen2.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png)
                 name_img2 = saveFileDialog1.FileName
-                tbTamImagen.Text = ExtraerNombre(name_img2) & " (" & str_Tamano_file(FileSystem.FileLen(name_img2)) & ")"
+                tbTamImagen.Text = ExtraerNombre(name_img2) & " (" & tamanoImg(FileSystem.FileLen(name_img2)) & ")"
                 MsgBox("Imagen guardada", MsgBoxStyle.Information)
             End If
         Catch ex As Exception

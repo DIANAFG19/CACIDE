@@ -74,7 +74,7 @@
         Return clave3
     End Function
 
-    '
+    'Tomamos el tamaño de la imagen
     Public Function tamanoImg(ByVal largo As Long) As String
         Dim rta As String = ""
         If (largo / 1024) > 1024 Then
