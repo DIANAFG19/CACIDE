@@ -37,6 +37,7 @@
 
     'Variables para guardar la imagen 
     Public nombreImgCi As String
+    Public tipoDatos As Byte
 
     'Variables a usar en la función de cifrar con feche y hora actual.
     Public anio As Byte
@@ -180,7 +181,7 @@
 
 
     'cabecera
-    Public tipo_datos As Byte
+
     Public multiplicidad As Byte
     'Public num_img As Byte
     Public metodo As Byte

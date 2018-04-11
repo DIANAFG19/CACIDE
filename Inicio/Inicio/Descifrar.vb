@@ -5,15 +5,6 @@ Imports System.IO
 
 Public Class Descifrar
 
-    Private Sub cbVerClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbVerClave.CheckedChanged
-        'Mostrar clave o no.
-        If cbVerClave.Checked Then
-            tbClave.UseSystemPasswordChar = False
-        Else
-            tbClave.UseSystemPasswordChar = True
-        End If
-    End Sub
-
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         'Dim comienzo As Integer
@@ -28,22 +19,26 @@ Public Class Descifrar
                 If .ShowDialog = DialogResult.OK Then
                     ' Mostramos la imagen en el control PictureBox
                     pbImagenCifrada.ImageLocation = .FileName
+                    'Creamos la imagen 3, que es la imagen cifrada.
                     imagen3 = New Bitmap(.FileName)
+                    'Se extrae el nombre de la imagen.
                     nombre = ExtraerNombre(.FileName)
+                    'Extraemos el número de píxeles de la imagen.
                     numPixImg = imagen3.Width * imagen3.Height
+                    'Mostramos información de la imagen (nombre y tamaño).
                     tbInformacion.Text = "Nombre: " & nombre
                     tbInformacion.Text = tbInformacion.Text & vbNewLine & "Tamaño: " & imagen3.Width & "x" & imagen3.Height & Chr(13) & Chr(13)
                     indicePixel = 1
                     indiceColor = 0
                     Call Leer()
                     'Validamos que la imagen tenga algún texto dentro de ella.
-                    If tipo_datos = 0 Then
+                    If tipoDatos = 0 Then
                         tbInformacion.Text = tbInformacion.Text & vbNewLine & "   No hay información cifrada"
                         btnDescifrar.Enabled = False
                     Else
-                        If tipo_datos = 1 Or tipo_datos = 3 Then
-                            tbInformacion.Text = tbInformacion.Text & vbNewLine & "  - Texto"
-                        End If
+                        ' If tipoDatos = 1 Or tipoDatos = 3 Then
+                        'tbInformacion.Text = tbInformacion.Text & vbNewLine & "  - Texto"
+                        'End If
                         btnDescifrar.Enabled = True
                     End If
                     tbInformacion.SelectionLength = nombre.Length
@@ -53,15 +48,39 @@ Public Class Descifrar
         End Using
     End Sub
 
+    Private Sub btnDescifrar_Click(sender As Object, e As EventArgs) Handles btnDescifrar.Click
+        Dim octeto, octetoL As Byte
+        Dim longTexto As Integer
+        Dim texto As String = ""
+
+        indicePixel = 22
+        indiceColor = 0
+        If multiplicidad > 0 Then
+        Else
+            Call ConClave2()
+            claveCambio = ModificarClave(claveGeneral)
+            indiceClave = 1
+            longTexto = LeerDato()
+            octetoL = LeerDato()
+            longTexto = (longTexto << 8) + octetoL
+                For i = 1 To longTexto
+                octeto = LeerDato()
+                texto = texto & Chr(Module1.descifrar(octeto))
+                Next
+                tbTextoCifrado.Text = texto
+
+        End If
+    End Sub
+
     'Se lee la imagen, los bits con respecto al cifrado de fecha, clave y complemento
     Private Sub Leer()
         Dim octeto1, octeto2 As Byte
         octeto1 = LeerDatos(8)
         octeto2 = LeerDatos(8)
         If octeto1 <> Asc("F") Or octeto2 <> Asc("D") Then
-            tipo_datos = 0
+            tipoDatos = 0
         Else
-            tipo_datos = LeerDatos(2)
+            tipoDatos = LeerDatos(2)
             multiplicidad = LeerDatos(2)
             anio = LeerDatos(7)
             mes = LeerDatos(4)
@@ -106,46 +125,9 @@ Public Class Descifrar
         Return rta
     End Function
 
-    Private Sub btnDescifrar_Click(sender As Object, e As EventArgs) Handles btnDescifrar.Click
-        Dim octeto, octetoL As Byte
-        Dim long_texto, long_filename As Integer
-        Dim texto As String = ""
-        Dim num_files As Integer
 
-        indicePixel = 22
-        indiceColor = 0
-        If tbClave.Text = "" Then
-            MsgBox("Introduce la clave ")
-        Else
-            If multiplicidad > 0 Then
-            Else
-                Call Hallar_offset2()
-                claveCambio = ModificarClave(claveGeneral)
-                indiceClave = 1
-                If tipo_datos = 1 Or tipo_datos = 3 Then
-                    long_texto = Leer_dato()
-                    octetoL = Leer_dato()
-                    long_texto = (long_texto << 8) + octetoL
-                    For i = 1 To long_texto
-                        octeto = Leer_dato()
-                        texto = texto & Chr(Module1.descifrar(octeto))
-                    Next
-                    tbTextoCifrado.Text = texto
-                End If
-                If tipo_datos = 2 Or tipo_datos = 3 Then
-                    num_files = Leer_dato()
-                    long_filename = Leer_dato()
-                    texto = ""
-                    For i = 1 To long_filename
-                        octeto = Leer_dato()
-                        texto = texto & Chr(Module1.descifrar(octeto))
-                    Next
-                End If
-            End If
-        End If
-    End Sub
 
-    Private Sub Hallar_offset2()
+    Private Sub ConClave2()
         Dim i As Integer
         offset = 0
         For i = 1 To claveGeneral.Length
@@ -154,7 +136,7 @@ Public Class Descifrar
         offset = offset Mod 20
     End Sub
 
-    Private Function Leer_dato() As Byte
+    Private Function LeerDato() As Byte
         Dim rta As Byte
         rta = LeerDatos(8)
         Return rta
