@@ -18,22 +18,14 @@
             If tbUsuario.Text = "" Or tbPass.Text = "" Then
                 MsgBox("Ingrese usuario y/o contraseña.")
                 'Validamos que exista el usuario.
-            ElseIf tbUsuario.Text = user Then
+            ElseIf tbUsuario.Text = user Or tbUsuario.Text = user2 Then
                 'Validamos que la contraseña corresponda a ese usuario.
-                If tbPass.Text = clavePrivada Then
+                If tbPass.Text = claveGeneral Then
                     Bienvenido.Show()
                     tbUsuario.Clear()
                     tbPass.Clear()
                 Else
                     'En caso de que no coincida, mostrar error.
-                    MsgBox("Contraseña incorrecta.")
-                End If
-            ElseIf tbUsuario.Text = user2 Then
-                If tbPass.Text = clavePrivada2 Then
-                    Bienvenido.Show()
-                    tbUsuario.Clear()
-                    tbPass.Clear()
-                Else
                     MsgBox("Contraseña incorrecta.")
                 End If
             Else

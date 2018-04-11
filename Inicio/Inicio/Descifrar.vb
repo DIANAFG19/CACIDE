@@ -33,8 +33,6 @@ Public Class Descifrar
                     numPixImg = imagen3.Width * imagen3.Height
                     tbInformacion.Text = "Nombre: " & nombre
                     tbInformacion.Text = tbInformacion.Text & vbNewLine & "Tamaño: " & imagen3.Width & "x" & imagen3.Height & Chr(13) & Chr(13)
-                    'tbInformacion.Text = tbInformacion.Text & "Información cifrada:"
-                    'comienzo = tbInformacion.TextLength
                     indicePixel = 1
                     indiceColor = 0
                     Call Leer()
@@ -48,12 +46,7 @@ Public Class Descifrar
                         End If
                         btnDescifrar.Enabled = True
                     End If
-                    'tbInformacion.SelectionStart = 8
                     tbInformacion.SelectionLength = nombre.Length
-                    'tbInformacion.SelectionColor = Color.Blue
-                    'tbInformacion.SelectionStart = comienzo
-                    'tbInformacion.SelectionLength = tbInformacion.TextLength - comienzo
-                    'tbInformacion.SelectionColor = Color.Red
                     tbTextoCifrado.Text = ""
                 End If
             End With
@@ -121,7 +114,7 @@ Public Class Descifrar
 
         indicePixel = 22
         indiceColor = 0
-        If claveGeneral = 0 Then
+        If tbClave.Text = "" Then
             MsgBox("Introduce la clave ")
         Else
             If multiplicidad > 0 Then
@@ -155,8 +148,8 @@ Public Class Descifrar
     Private Sub Hallar_offset2()
         Dim i As Integer
         offset = 0
-        For i = 1 To clavePublica.Length
-            offset = offset + Asc(clavePublica.Substring(i - 1, 1)) Mod 20
+        For i = 1 To claveGeneral.Length
+            offset = offset + Asc(claveGeneral.Substring(i - 1, 1)) Mod 20
         Next
         offset = offset Mod 20
     End Sub

@@ -105,7 +105,7 @@ Partial Class Bienvenido
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnCerrar
-        Me.ClientSize = New System.Drawing.Size(312, 216)
+        Me.ClientSize = New System.Drawing.Size(312, 233)
         Me.Controls.Add(Me.btnPerfil)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.label1)

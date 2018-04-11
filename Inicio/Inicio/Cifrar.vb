@@ -102,6 +102,7 @@ Public Class Cifrar
             saveFileDialog1.Filter = "Imagen PNG (*.png)|*.png"
             saveFileDialog1.RestoreDirectory = True
             saveFileDialog1.Title = "Guardar como..."
+            'Decimos que la imagen se ha guardado correctamente.
             If (saveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK) Then
                 imagen2.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png)
                 nombreImgCi = saveFileDialog1.FileName
