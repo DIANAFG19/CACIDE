@@ -5,15 +5,24 @@ Imports System.IO
 
 Public Class Descifrar
 
+    Private Sub cbVerClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbVerClave.CheckedChanged
+        'Mostrar clave o no.
+        If cbVerClave.Checked Then
+            tbClave.UseSystemPasswordChar = False
+        Else
+            tbClave.UseSystemPasswordChar = True
+        End If
+    End Sub
+
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
-        Dim comienzo As Integer
-
+        'Dim comienzo As Integer
+        'Abrimos un openFileDialogn para buscar una imagen del equipo.
         Using OpenFileDialog1 As New OpenFileDialog()
             With OpenFileDialog1
                 .CheckFileExists = True
                 .ShowReadOnly = False
-                '.Filter = "All Files|*.*|Bitmap Files (*)|*.bmp;*.gif;*.jpg"
+                'Filtramos imagenes .png que es como la que ciframos.
                 .Filter = "Imagen PNG|*.png"
                 .FilterIndex = 2
                 If .ShowDialog = DialogResult.OK Then
@@ -24,11 +33,12 @@ Public Class Descifrar
                     numPixImg = imagen3.Width * imagen3.Height
                     tbInformacion.Text = "Nombre: " & nombre
                     tbInformacion.Text = tbInformacion.Text & vbNewLine & "Tamaño: " & imagen3.Width & "x" & imagen3.Height & Chr(13) & Chr(13)
-                    tbInformacion.Text = tbInformacion.Text & "Información cifrada:"
-                    comienzo = tbInformacion.TextLength
+                    'tbInformacion.Text = tbInformacion.Text & "Información cifrada:"
+                    'comienzo = tbInformacion.TextLength
                     indicePixel = 1
                     indiceColor = 0
-                    Call Leer_cabecera()
+                    Call Leer()
+                    'Validamos que la imagen tenga algún texto dentro de ella.
                     If tipo_datos = 0 Then
                         tbInformacion.Text = tbInformacion.Text & vbNewLine & "   No hay información cifrada"
                         btnDescifrar.Enabled = False
@@ -36,47 +46,45 @@ Public Class Descifrar
                         If tipo_datos = 1 Or tipo_datos = 3 Then
                             tbInformacion.Text = tbInformacion.Text & vbNewLine & "  - Texto"
                         End If
-                        If tipo_datos = 2 Or tipo_datos = 3 Then
-                            tbInformacion.Text = tbInformacion.Text & vbNewLine & "  - Archivo adjunto"
-                        End If
                         btnDescifrar.Enabled = True
                     End If
-                    tbInformacion.SelectionStart = 8
+                    'tbInformacion.SelectionStart = 8
                     tbInformacion.SelectionLength = nombre.Length
-                    tbInformacion.SelectionColor = Color.Blue
-                    tbInformacion.SelectionStart = comienzo
-                    tbInformacion.SelectionLength = tbInformacion.TextLength - comienzo
-                    tbInformacion.SelectionColor = Color.Red
+                    'tbInformacion.SelectionColor = Color.Blue
+                    'tbInformacion.SelectionStart = comienzo
+                    'tbInformacion.SelectionLength = tbInformacion.TextLength - comienzo
+                    'tbInformacion.SelectionColor = Color.Red
                     tbTextoCifrado.Text = ""
                 End If
             End With
         End Using
     End Sub
 
-    Private Sub Leer_cabecera()
+    'Se lee la imagen, los bits con respecto al cifrado de fecha, clave y complemento
+    Private Sub Leer()
         Dim octeto1, octeto2 As Byte
-        octeto1 = Leer_dato_m1(8)
-        octeto2 = Leer_dato_m1(8)
+        octeto1 = LeerDatos(8)
+        octeto2 = LeerDatos(8)
         If octeto1 <> Asc("F") Or octeto2 <> Asc("D") Then
             tipo_datos = 0
         Else
-            tipo_datos = Leer_dato_m1(2)
+            tipo_datos = LeerDatos(2)
             'MsgBox("tipo datos " & tipo_datos)
-            multiplicidad = Leer_dato_m1(2)
+            multiplicidad = LeerDatos(2)
             'MsgBox("multiplicidad " & multiplicidad)
-            anio = Leer_dato_m1(7)
-            mes = Leer_dato_m1(4)
-            dia = Leer_dato_m1(5)
-            hora = Leer_dato_m1(6)
-            minuto = Leer_dato_m1(6)
-            segundo = Leer_dato_m1(6)
+            anio = LeerDatos(7)
+            mes = LeerDatos(4)
+            dia = LeerDatos(5)
+            hora = LeerDatos(6)
+            minuto = LeerDatos(6)
+            segundo = LeerDatos(6)
             'MsgBox("fh" & fh_anho & " " & fh_mes & " " & fh_dia & " " & fh_hora & " " & fh_minuto & " " & fh_segundo)
-            numImg = Leer_dato_m1(8)
-            metodo = Leer_dato_m1(1)
+            numImg = LeerDatos(8)
+            metodo = LeerDatos(1)
         End If
     End Sub
 
-    Private Function Leer_dato_m1(ByVal nbits As Short) As Byte
+    Private Function LeerDatos(ByVal nbits As Short) As Byte
         Dim i As Short
         Dim fila, columna As Integer
         Dim bit As Byte
@@ -161,7 +169,7 @@ Public Class Descifrar
 
     Private Function Leer_dato() As Byte
         Dim rta As Byte
-        rta = Leer_dato_m1(8)
+        rta = LeerDatos(8)
         Return rta
     End Function
 
@@ -179,4 +187,6 @@ Public Class Descifrar
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
     End Sub
+
+
 End Class

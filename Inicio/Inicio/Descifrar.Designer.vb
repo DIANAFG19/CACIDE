@@ -34,8 +34,8 @@ Partial Class Descifrar
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.tbClave = New System.Windows.Forms.TextBox()
         Me.cbVerClave = New System.Windows.Forms.CheckBox()
-        Me.tbPass = New System.Windows.Forms.TextBox()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -167,32 +167,33 @@ Partial Class Descifrar
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Texto Descifrado:"
         '
+        'tbClave
+        '
+        Me.tbClave.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbClave.Location = New System.Drawing.Point(132, 20)
+        Me.tbClave.MaxLength = 20
+        Me.tbClave.Name = "tbClave"
+        Me.tbClave.Size = New System.Drawing.Size(270, 26)
+        Me.tbClave.TabIndex = 34
+        Me.tbClave.UseSystemPasswordChar = True
+        '
         'cbVerClave
         '
         Me.cbVerClave.AutoSize = True
-        Me.cbVerClave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbVerClave.Location = New System.Drawing.Point(413, 21)
+        Me.cbVerClave.Font = New System.Drawing.Font("Rockwell", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbVerClave.Location = New System.Drawing.Point(411, 21)
         Me.cbVerClave.Name = "cbVerClave"
-        Me.cbVerClave.Size = New System.Drawing.Size(86, 20)
-        Me.cbVerClave.TabIndex = 34
+        Me.cbVerClave.Size = New System.Drawing.Size(102, 23)
+        Me.cbVerClave.TabIndex = 35
         Me.cbVerClave.Text = "Ver Clave"
         Me.cbVerClave.UseVisualStyleBackColor = True
-        '
-        'tbPass
-        '
-        Me.tbPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPass.Location = New System.Drawing.Point(129, 20)
-        Me.tbPass.Name = "tbPass"
-        Me.tbPass.Size = New System.Drawing.Size(270, 22)
-        Me.tbPass.TabIndex = 35
-        Me.tbPass.UseSystemPasswordChar = True
         '
         'Descifrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(520, 421)
-        Me.Controls.Add(Me.tbPass)
+        Me.Controls.Add(Me.tbClave)
         Me.Controls.Add(Me.cbVerClave)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox2)
@@ -223,6 +224,6 @@ Partial Class Descifrar
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents tbClave As TextBox
     Friend WithEvents cbVerClave As CheckBox
-    Friend WithEvents tbPass As TextBox
 End Class

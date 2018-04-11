@@ -5,6 +5,8 @@ Imports System.IO
 
 Public Class Cifrar
 
+    'MÉTODO DE DIBUJAR LA IAMGEN
+    'REFERECNIAS: https://msdn.microsoft.com/es-es/library/system.drawing.graphics(v=vs.110).aspx
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
@@ -21,8 +23,6 @@ Public Class Cifrar
                     btnGuardar.Enabled = False
                     pbImagenCifrada.Image = Nothing
                     tbTextoCifrar.Text = ""
-                    'tbTamImagen.Text = ""
-                    'tbTamImagen.Refresh()
                     'Creamos un bitmap para la imagen
                     imagen1 = New Bitmap(.FileName)
                     'El segundo bitmap contendra información de la imagen
@@ -94,8 +94,11 @@ Public Class Cifrar
         Dim saveFileDialog1 As New SaveFileDialog
         Dim cide As New FileInfo(nombreImg)
         Try
+            'Creamos un save dialig para poder guardar la iamgen en el equipo.
             saveFileDialog1.DefaultExt = "jpg"
+            'Especificamos que se va aguardar con su nombre origina mas el -cide.
             saveFileDialog1.FileName = cide.Name.Substring(0, cide.Name.Length - 4) & "_cide"
+            'Se va a guardar con la extension .png
             saveFileDialog1.Filter = "Imagen PNG (*.png)|*.png"
             saveFileDialog1.RestoreDirectory = True
             saveFileDialog1.Title = "Guardar como..."
@@ -118,6 +121,9 @@ Public Class Cifrar
         Inicio.Show()
     End Sub
 
+
+    'REFERENCIAS: 
+    'VISUAL BASIC .NET: https://docs.microsoft.com/en-us/dotnet/visual-basic/
     'Creamos una función para poder comprobar que hay una imagen y hay texto para cifrar dentro de la imagen.
     Private Function ComprobarCampos() As Boolean
         Dim comprobar As Boolean

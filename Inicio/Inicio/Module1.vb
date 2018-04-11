@@ -20,13 +20,13 @@
     'Clave para cifrar y descifrar, es general.
     Public claveGeneral As String = "CACIDE182"
 
-    'Variables para usar en el cifrado.
+    'Variables para usar en el formulario cifrado.
     Public imagen1 As Bitmap
     Public imagen2 As Bitmap
     Public nombreImg As String
     Public numPixImg As Long
     Public indicePixel As Long = 1
-    Public indiceColor As Short =0 
+    Public indiceColor As Short = 0
     Public longDatos As Long = 0
     Public indiceDatos As Long = 0
 
@@ -45,6 +45,9 @@
     Public hora As Byte
     Public minuto As Byte
     Public segundo As Byte
+
+    'Variables usadan en el formulario descrifrado
+    Public imagen3 As Bitmap
 
     'Método para obtener el nombre de la imagen y poder mostrarlo.
     Public Function ExtraerNombre(ByRef ruta As String) As String
@@ -101,12 +104,62 @@
         Return rta
     End Function
 
+    'Método para cifrar la imagen intercambiando bits.
+    Public Function cifrar(ByVal octeto As Byte) As Byte
+        Dim rta As Byte
+        rta = octeto Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
+        IntercambiarBits(rta, 1, 4)
+        IntercambiarBits(rta, 2, 3)
+        IntercambiarBits(rta, 5, 8)
+        IntercambiarBits(rta, 6, 7)
+        IntercambiarBits(rta, 3, 6)
+        rta = Complemento(rta)
+        If indiceClave = claveCambio.Length Then
+            indiceClave = 1
+        Else
+            indiceClave = indiceClave + 1
+        End If
+        Return rta
+    End Function
+
+    'Método para tomar los bits de la imagen.
+    Public Function GetBit(ByVal octeto As Byte, ByVal n As Byte) As Byte
+        Dim rta As Byte
+        Dim potencia As Byte = 2 ^ (n - 1)
+        rta = octeto And potencia
+        rta >>= (n - 1)
+        Return rta
+    End Function
+
+    'Método para poner los bits en la imagen
+    Public Sub PutBit(ByRef octeto As Byte, ByVal n As Byte, ByVal bit As Byte)
+        Dim mascara As Byte
+        If bit = 0 Then
+            mascara = (2 ^ 8 - 1) - 2 ^ (n - 1)
+            octeto = octeto And mascara
+        Else
+            mascara = 2 ^ (n - 1)
+            octeto = octeto Or mascara
+        End If
+    End Sub
+
+    'Método para mezclar los bits y hacer el cifrado.
+    Public Sub IntercambiarBits(ByRef octeto As Byte, ByVal n1 As Byte, ByVal n2 As Byte)
+        Dim bit1, bit2 As Byte
+        bit1 = GetBit(octeto, n1)
+        bit2 = GetBit(octeto, n2)
+        If bit1 <> bit2 Then
+            PutBit(octeto, n1, bit2)
+            PutBit(octeto, n2, bit1)
+        End If
+    End Sub
+
 
 
 
 
     Public imagen2b As Bitmap
-    Public imagen3 As Bitmap
+
     Public estado_PB2 As Integer
     Public hallada_img2b As Boolean
 
@@ -132,53 +185,10 @@
     'Public num_img As Byte
     Public metodo As Byte
 
-    Public Function GetBit(ByVal octeto As Byte, ByVal n As Byte) As Byte
-        Dim rta As Byte
-        Dim potencia As Byte = 2 ^ (n - 1)
-        rta = octeto And potencia
-        rta >>= (n - 1)
-        Return rta
-    End Function
-
-    Public Sub PutBit(ByRef octeto As Byte, ByVal n As Byte, ByVal bit As Byte)
-        Dim mascara As Byte
-        If bit = 0 Then
-            mascara = (2 ^ 8 - 1) - 2 ^ (n - 1)
-            octeto = octeto And mascara
-        Else
-            mascara = 2 ^ (n - 1)
-            octeto = octeto Or mascara
-        End If
-    End Sub
-
-    Public Sub IntercambiarBits(ByRef octeto As Byte, ByVal n1 As Byte, ByVal n2 As Byte)
-        Dim bit1, bit2 As Byte
-        bit1 = GetBit(octeto, n1)
-        bit2 = GetBit(octeto, n2)
-        If bit1 <> bit2 Then
-            PutBit(octeto, n1, bit2)
-            PutBit(octeto, n2, bit1)
-        End If
-    End Sub
 
 
-    'Método para cifrar la imagen intercambiando bits.
-    Public Function cifrar(ByVal octeto As Byte) As Byte
-        Dim rta As Byte
-        rta = octeto Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
-        IntercambiarBits(rta, 1, 4)
-        IntercambiarBits(rta, 2, 3)
-        IntercambiarBits(rta, 5, 8)
-        IntercambiarBits(rta, 6, 7)
-        IntercambiarBits(rta, 3, 6)
-        rta = Complemento(rta)
-        If indiceClave = claveCambio.Length Then
-            indiceClave = 1
-        Else
-            indiceClave = indiceClave + 1
-        End If
-        Return rta
-    End Function
+
+
 
 
     Public Function Complemento(ByVal octeto As Byte) As Byte

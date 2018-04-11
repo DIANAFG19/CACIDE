@@ -31,7 +31,6 @@ Partial Class Cifrar
         Me.tbTextoCifrar = New System.Windows.Forms.TextBox()
         Me.btnCifrar = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.tbInformacion = New System.Windows.Forms.TextBox()
         Me.btnCargar = New System.Windows.Forms.Button()
         Me.pbImagen = New System.Windows.Forms.PictureBox()
         Me.btnLimpiar = New System.Windows.Forms.Button()
@@ -39,6 +38,7 @@ Partial Class Cifrar
         Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tbInformacion = New System.Windows.Forms.RichTextBox()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,15 +104,6 @@ Partial Class Cifrar
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(655, 227)
         Me.Panel2.TabIndex = 33
-        '
-        'tbInformacion
-        '
-        Me.tbInformacion.Location = New System.Drawing.Point(208, 46)
-        Me.tbInformacion.Multiline = True
-        Me.tbInformacion.Name = "tbInformacion"
-        Me.tbInformacion.ReadOnly = True
-        Me.tbInformacion.Size = New System.Drawing.Size(138, 129)
-        Me.tbInformacion.TabIndex = 31
         '
         'btnCargar
         '
@@ -185,6 +176,19 @@ Partial Class Cifrar
         Me.Panel1.Size = New System.Drawing.Size(655, 195)
         Me.Panel1.TabIndex = 34
         '
+        'tbInformacion
+        '
+        Me.tbInformacion.BackColor = System.Drawing.Color.White
+        Me.tbInformacion.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.tbInformacion.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tbInformacion.ForeColor = System.Drawing.Color.Black
+        Me.tbInformacion.Location = New System.Drawing.Point(214, 49)
+        Me.tbInformacion.Name = "tbInformacion"
+        Me.tbInformacion.ReadOnly = True
+        Me.tbInformacion.Size = New System.Drawing.Size(124, 129)
+        Me.tbInformacion.TabIndex = 33
+        Me.tbInformacion.Text = ""
+        '
         'Cifrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -198,7 +202,6 @@ Partial Class Cifrar
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
@@ -213,7 +216,6 @@ Partial Class Cifrar
     Friend WithEvents tbTextoCifrar As TextBox
     Friend WithEvents btnCifrar As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents tbInformacion As TextBox
     Friend WithEvents btnCargar As Button
     Friend WithEvents pbImagen As PictureBox
     Friend WithEvents btnLimpiar As Button
@@ -221,4 +223,5 @@ Partial Class Cifrar
     Friend WithEvents pbImagenCifrada As PictureBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents tbInformacion As RichTextBox
 End Class
