@@ -1,6 +1,7 @@
 ﻿Public Class Inicio
 
     Public intentos As Int16 = 1
+    Public usuarioActivo As String
 
     Private Sub cbVerClave_CheckedChanged(sender As Object, e As EventArgs) Handles cbVerClave.CheckedChanged
         'Mostrar clave o no.
@@ -20,6 +21,7 @@
                 'Validamos que exista el usuario.
             ElseIf tbUsuario.Text = user Or tbUsuario.Text = user2 Then
                 'Validamos que la contraseña corresponda a ese usuario.
+                usuarioActivo = tbUsuario.Text
                 If tbPass.Text = claveGeneral Then
                     Bienvenido.Show()
                     tbUsuario.Clear()
