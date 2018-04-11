@@ -31,18 +31,18 @@ Partial Class Cifrar
         Me.tbTextoCifrar = New System.Windows.Forms.TextBox()
         Me.btnCifrar = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
+        Me.btnGuardar = New System.Windows.Forms.Button()
         Me.tbInformacion = New System.Windows.Forms.RichTextBox()
         Me.btnCargar = New System.Windows.Forms.Button()
         Me.pbImagen = New System.Windows.Forms.PictureBox()
         Me.btnLimpiar = New System.Windows.Forms.Button()
-        Me.btnGuardar = New System.Windows.Forms.Button()
-        Me.pbImagenCifrada = New System.Windows.Forms.PictureBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -88,7 +88,7 @@ Partial Class Cifrar
         Me.btnCifrar.Location = New System.Drawing.Point(433, 26)
         Me.btnCifrar.Name = "btnCifrar"
         Me.btnCifrar.Size = New System.Drawing.Size(103, 27)
-        Me.btnCifrar.TabIndex = 22
+        Me.btnCifrar.TabIndex = 2
         Me.btnCifrar.Text = "Cifrar"
         Me.btnCifrar.UseVisualStyleBackColor = False
         '
@@ -104,6 +104,27 @@ Partial Class Cifrar
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(568, 242)
         Me.Panel2.TabIndex = 33
+        '
+        'pbImagenCifrada
+        '
+        Me.pbImagenCifrada.BackColor = System.Drawing.Color.White
+        Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pbImagenCifrada.Location = New System.Drawing.Point(358, 13)
+        Me.pbImagenCifrada.Name = "pbImagenCifrada"
+        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 183)
+        Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbImagenCifrada.TabIndex = 1
+        Me.pbImagenCifrada.TabStop = False
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.Enabled = False
+        Me.btnGuardar.Location = New System.Drawing.Point(404, 204)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(104, 24)
+        Me.btnGuardar.TabIndex = 1
+        Me.btnGuardar.Text = "Guardar Imagen"
+        Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'tbInformacion
         '
@@ -124,7 +145,7 @@ Partial Class Cifrar
         Me.btnCargar.Location = New System.Drawing.Point(39, 202)
         Me.btnCargar.Name = "btnCargar"
         Me.btnCargar.Size = New System.Drawing.Size(124, 26)
-        Me.btnCargar.TabIndex = 30
+        Me.btnCargar.TabIndex = 0
         Me.btnCargar.Text = "Cargar Imagen"
         Me.btnCargar.UseVisualStyleBackColor = True
         '
@@ -144,37 +165,17 @@ Partial Class Cifrar
         Me.btnLimpiar.Location = New System.Drawing.Point(433, 74)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(103, 25)
-        Me.btnLimpiar.TabIndex = 25
+        Me.btnLimpiar.TabIndex = 3
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = True
         '
-        'btnGuardar
-        '
-        Me.btnGuardar.Enabled = False
-        Me.btnGuardar.Location = New System.Drawing.Point(404, 204)
-        Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(104, 24)
-        Me.btnGuardar.TabIndex = 4
-        Me.btnGuardar.Text = "Guardar Imagen"
-        Me.btnGuardar.UseVisualStyleBackColor = True
-        '
-        'pbImagenCifrada
-        '
-        Me.pbImagenCifrada.BackColor = System.Drawing.Color.White
-        Me.pbImagenCifrada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbImagenCifrada.Location = New System.Drawing.Point(358, 13)
-        Me.pbImagenCifrada.Name = "pbImagenCifrada"
-        Me.pbImagenCifrada.Size = New System.Drawing.Size(195, 183)
-        Me.pbImagenCifrada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pbImagenCifrada.TabIndex = 1
-        Me.pbImagenCifrada.TabStop = False
-        '
         'btnSalir
         '
+        Me.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnSalir.Location = New System.Drawing.Point(433, 122)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(103, 25)
-        Me.btnSalir.TabIndex = 26
+        Me.btnSalir.TabIndex = 4
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
@@ -191,8 +192,10 @@ Partial Class Cifrar
         '
         'Cifrar
         '
+        Me.AcceptButton = Me.btnCifrar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.btnSalir
         Me.ClientSize = New System.Drawing.Size(581, 434)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
@@ -202,8 +205,8 @@ Partial Class Cifrar
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbImagenCifrada, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbImagen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

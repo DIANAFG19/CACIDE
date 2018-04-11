@@ -45,7 +45,7 @@ Partial Class Descifrar
         Me.btnCargar.Location = New System.Drawing.Point(25, 17)
         Me.btnCargar.Name = "btnCargar"
         Me.btnCargar.Size = New System.Drawing.Size(124, 26)
-        Me.btnCargar.TabIndex = 1
+        Me.btnCargar.TabIndex = 0
         Me.btnCargar.Text = "Cargar Imagen"
         Me.btnCargar.UseVisualStyleBackColor = True
         '
@@ -86,10 +86,11 @@ Partial Class Descifrar
         '
         'btnSalir
         '
+        Me.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnSalir.Location = New System.Drawing.Point(10, 94)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(103, 25)
-        Me.btnSalir.TabIndex = 26
+        Me.btnSalir.TabIndex = 3
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
@@ -98,7 +99,7 @@ Partial Class Descifrar
         Me.btnLimpiar.Location = New System.Drawing.Point(10, 53)
         Me.btnLimpiar.Name = "btnLimpiar"
         Me.btnLimpiar.Size = New System.Drawing.Size(103, 25)
-        Me.btnLimpiar.TabIndex = 25
+        Me.btnLimpiar.TabIndex = 2
         Me.btnLimpiar.Text = "Limpiar"
         Me.btnLimpiar.UseVisualStyleBackColor = True
         '
@@ -109,7 +110,7 @@ Partial Class Descifrar
         Me.btnDescifrar.Location = New System.Drawing.Point(10, 10)
         Me.btnDescifrar.Name = "btnDescifrar"
         Me.btnDescifrar.Size = New System.Drawing.Size(103, 27)
-        Me.btnDescifrar.TabIndex = 22
+        Me.btnDescifrar.TabIndex = 1
         Me.btnDescifrar.Text = "Descifrar"
         Me.btnDescifrar.UseVisualStyleBackColor = False
         '
@@ -156,8 +157,10 @@ Partial Class Descifrar
         '
         'Descifrar
         '
+        Me.AcceptButton = Me.btnDescifrar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.btnSalir
         Me.ClientSize = New System.Drawing.Size(516, 368)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
