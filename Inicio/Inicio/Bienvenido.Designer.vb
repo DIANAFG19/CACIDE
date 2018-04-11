@@ -35,11 +35,11 @@ Partial Class Bienvenido
         Me.btnDescifrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDescifrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnDescifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnDescifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDescifrar.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDescifrar.ForeColor = System.Drawing.Color.Black
-        Me.btnDescifrar.Location = New System.Drawing.Point(176, 87)
+        Me.btnDescifrar.Location = New System.Drawing.Point(173, 87)
         Me.btnDescifrar.Name = "btnDescifrar"
-        Me.btnDescifrar.Size = New System.Drawing.Size(90, 42)
+        Me.btnDescifrar.Size = New System.Drawing.Size(95, 42)
         Me.btnDescifrar.TabIndex = 25
         Me.btnDescifrar.Text = "DESCIFRAR"
         Me.btnDescifrar.UseVisualStyleBackColor = False
@@ -49,9 +49,9 @@ Partial Class Bienvenido
         Me.btnCifrar.BackColor = System.Drawing.Color.OrangeRed
         Me.btnCifrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCifrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCifrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCifrar.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCifrar.ForeColor = System.Drawing.Color.Black
-        Me.btnCifrar.Location = New System.Drawing.Point(23, 87)
+        Me.btnCifrar.Location = New System.Drawing.Point(28, 87)
         Me.btnCifrar.Name = "btnCifrar"
         Me.btnCifrar.Size = New System.Drawing.Size(90, 42)
         Me.btnCifrar.TabIndex = 24
@@ -63,10 +63,10 @@ Partial Class Bienvenido
         Me.label1.AutoSize = True
         Me.label1.BackColor = System.Drawing.Color.Transparent
         Me.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.label1.Font = New System.Drawing.Font("AR ESSENCE", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label1.Location = New System.Drawing.Point(12, 9)
+        Me.label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 25.0!)
+        Me.label1.Location = New System.Drawing.Point(17, 21)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(271, 58)
+        Me.label1.Size = New System.Drawing.Size(266, 39)
         Me.label1.TabIndex = 26
         Me.label1.Text = "¡¡BIENVENIDO!!"
         '
@@ -76,9 +76,9 @@ Partial Class Bienvenido
         Me.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCerrar.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrar.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCerrar.ForeColor = System.Drawing.Color.Black
-        Me.btnCerrar.Location = New System.Drawing.Point(155, 162)
+        Me.btnCerrar.Location = New System.Drawing.Point(160, 162)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(128, 42)
         Me.btnCerrar.TabIndex = 27
@@ -90,9 +90,9 @@ Partial Class Bienvenido
         Me.btnPerfil.BackColor = System.Drawing.Color.OrangeRed
         Me.btnPerfil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnPerfil.Font = New System.Drawing.Font("AR ESSENCE", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPerfil.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPerfil.ForeColor = System.Drawing.Color.Black
-        Me.btnPerfil.Location = New System.Drawing.Point(22, 162)
+        Me.btnPerfil.Location = New System.Drawing.Point(27, 162)
         Me.btnPerfil.Name = "btnPerfil"
         Me.btnPerfil.Size = New System.Drawing.Size(90, 42)
         Me.btnPerfil.TabIndex = 28

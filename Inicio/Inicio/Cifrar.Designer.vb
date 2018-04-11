@@ -31,7 +31,6 @@ Partial Class Cifrar
         Me.tbTextoCifrar = New System.Windows.Forms.TextBox()
         Me.btnCifrar = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.tbTamImagen = New System.Windows.Forms.TextBox()
         Me.tbInformacion = New System.Windows.Forms.TextBox()
         Me.btnCargar = New System.Windows.Forms.Button()
         Me.pbImagen = New System.Windows.Forms.PictureBox()
@@ -96,7 +95,6 @@ Partial Class Cifrar
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.tbTamImagen)
         Me.Panel2.Controls.Add(Me.tbInformacion)
         Me.Panel2.Controls.Add(Me.btnCargar)
         Me.Panel2.Controls.Add(Me.pbImagen)
@@ -107,17 +105,9 @@ Partial Class Cifrar
         Me.Panel2.Size = New System.Drawing.Size(655, 227)
         Me.Panel2.TabIndex = 33
         '
-        'tbTamImagen
-        '
-        Me.tbTamImagen.Location = New System.Drawing.Point(208, 158)
-        Me.tbTamImagen.Name = "tbTamImagen"
-        Me.tbTamImagen.ReadOnly = True
-        Me.tbTamImagen.Size = New System.Drawing.Size(138, 20)
-        Me.tbTamImagen.TabIndex = 32
-        '
         'tbInformacion
         '
-        Me.tbInformacion.Location = New System.Drawing.Point(208, 23)
+        Me.tbInformacion.Location = New System.Drawing.Point(208, 46)
         Me.tbInformacion.Multiline = True
         Me.tbInformacion.Name = "tbInformacion"
         Me.tbInformacion.ReadOnly = True
@@ -223,7 +213,6 @@ Partial Class Cifrar
     Friend WithEvents tbTextoCifrar As TextBox
     Friend WithEvents btnCifrar As Button
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents tbTamImagen As TextBox
     Friend WithEvents tbInformacion As TextBox
     Friend WithEvents btnCargar As Button
     Friend WithEvents pbImagen As PictureBox

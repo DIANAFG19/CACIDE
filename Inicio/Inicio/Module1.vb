@@ -33,6 +33,18 @@
     'Variables que se usan dentro del cifrado.
     Public claveCambio As String
     Public indiceClave As Integer
+    Public numImg As Byte
+
+    'Variables para guardar la imagen 
+    Public nombreImgCi As String
+
+    'Variables a usar en la función de cifrar con feche y hora actual.
+    Public anio As Byte
+    Public mes As Byte
+    Public dia As Byte
+    Public hora As Byte
+    Public minuto As Byte
+    Public segundo As Byte
 
     'Método para obtener el nombre de la imagen y poder mostrarlo.
     Public Function ExtraerNombre(ByRef ruta As String) As String
@@ -47,7 +59,7 @@
         Return rta
     End Function
 
-    'Método para cifrar la clave dentro de la imagen jutno con el texto
+    'Método para cifrar la clave dentro de la imagen junto con el texto.
     Public Function ModificarClave(ByRef clave As String) As String
         Dim clave2 As String = ""
         Dim clave3 As String = ""
@@ -106,20 +118,14 @@
     '
 
 
-    Public num_img As Byte
+
     Public offset As Integer
     '
 
 
 
 
-    ' Fecha y hora
-    Public fh_anho As Byte
-    Public fh_mes As Byte
-    Public fh_dia As Byte
-    Public fh_hora As Byte
-    Public fh_minuto As Byte
-    Public fh_segundo As Byte
+
     'cabecera
     Public tipo_datos As Byte
     Public multiplicidad As Byte
@@ -156,7 +162,7 @@
     End Sub
 
 
-
+    'Método para cifrar la imagen intercambiando bits.
     Public Function cifrar(ByVal octeto As Byte) As Byte
         Dim rta As Byte
         rta = octeto Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
@@ -172,8 +178,8 @@
             indiceClave = indiceClave + 1
         End If
         Return rta
-
     End Function
+
 
     Public Function Complemento(ByVal octeto As Byte) As Byte
         Dim rta, parteH, parteL As Byte

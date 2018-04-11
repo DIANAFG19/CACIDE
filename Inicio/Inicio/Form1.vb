@@ -24,8 +24,8 @@
                     Bienvenido.Show()
                     tbUsuario.Clear()
                     tbPass.Clear()
-                    'En caso de que no coincida, mostrar error.
                 Else
+                    'En caso de que no coincida, mostrar error.
                     MsgBox("Contraseña incorrecta.")
                 End If
             ElseIf tbUsuario.Text = user2 Then
@@ -36,13 +36,13 @@
                 Else
                     MsgBox("Contraseña incorrecta.")
                 End If
-                'Si no es lo anterior, le decimos al usuario que no esta registrado.
             Else
+                'Si no es lo anterior, le decimos al usuario que no esta registrado.
                 MsgBox("Usted no esta registrado.")
             End If
-            'En caso de superar los intentos, deshabilitamos todo el formulario y sólo le permitimos salir.
         Else
-            MsgBox("Haz desperdiciado tus intentos.")
+            'En caso de superar los intentos, deshabilitamos todo el formulario y sólo le permitimos salir.
+            MsgBox("Haz desperdiciado tus 3 intentos.")
             tbUsuario.Enabled = False
             tbPass.Enabled = False
             cbVerClave.Enabled = False
