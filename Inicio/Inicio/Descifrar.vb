@@ -69,16 +69,13 @@ Public Class Descifrar
             tipo_datos = 0
         Else
             tipo_datos = LeerDatos(2)
-            'MsgBox("tipo datos " & tipo_datos)
             multiplicidad = LeerDatos(2)
-            'MsgBox("multiplicidad " & multiplicidad)
             anio = LeerDatos(7)
             mes = LeerDatos(4)
             dia = LeerDatos(5)
             hora = LeerDatos(6)
             minuto = LeerDatos(6)
             segundo = LeerDatos(6)
-            'MsgBox("fh" & fh_anho & " " & fh_mes & " " & fh_dia & " " & fh_hora & " " & fh_minuto & " " & fh_segundo)
             numImg = LeerDatos(8)
             metodo = LeerDatos(1)
         End If
@@ -90,10 +87,7 @@ Public Class Descifrar
         Dim bit As Byte
         Dim MyColor As Color
         Dim rta As Byte = 0
-
         If (numPixImg - indicePixel) < 3 Then
-            '.....
-            '....
         Else
             For i = nbits To 1 Step -1
                 columna = Int((indicePixel - 1) / imagen3.Width)
@@ -125,7 +119,7 @@ Public Class Descifrar
         Dim texto As String = ""
         Dim num_files As Integer
 
-        indicePixel = 22 'Despues de la cabecera
+        indicePixel = 22
         indiceColor = 0
         If claveGeneral = 0 Then
             MsgBox("Introduce la clave ")
@@ -178,8 +172,6 @@ Public Class Descifrar
         tbInformacion.Text = ""
         pbImagenCifrada.ImageLocation = ""
         pbImagenCifrada.Refresh()
-        'estado_PB2 = 0
-        'hallada_img2b = False
         pbImagenCifrada.Image = Nothing
         btnDescifrar.Enabled = False
     End Sub
