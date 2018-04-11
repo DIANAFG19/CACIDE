@@ -40,7 +40,7 @@ Partial Class Bienvenido
         Me.btnDescifrar.Location = New System.Drawing.Point(173, 87)
         Me.btnDescifrar.Name = "btnDescifrar"
         Me.btnDescifrar.Size = New System.Drawing.Size(95, 42)
-        Me.btnDescifrar.TabIndex = 25
+        Me.btnDescifrar.TabIndex = 1
         Me.btnDescifrar.Text = "DESCIFRAR"
         Me.btnDescifrar.UseVisualStyleBackColor = False
         '
@@ -54,7 +54,7 @@ Partial Class Bienvenido
         Me.btnCifrar.Location = New System.Drawing.Point(28, 87)
         Me.btnCifrar.Name = "btnCifrar"
         Me.btnCifrar.Size = New System.Drawing.Size(90, 42)
-        Me.btnCifrar.TabIndex = 24
+        Me.btnCifrar.TabIndex = 0
         Me.btnCifrar.Text = "CIFRAR"
         Me.btnCifrar.UseVisualStyleBackColor = False
         '
@@ -81,7 +81,7 @@ Partial Class Bienvenido
         Me.btnCerrar.Location = New System.Drawing.Point(160, 162)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(128, 42)
-        Me.btnCerrar.TabIndex = 27
+        Me.btnCerrar.TabIndex = 3
         Me.btnCerrar.Text = "CERRAR SESIÓN"
         Me.btnCerrar.UseVisualStyleBackColor = False
         '
@@ -95,7 +95,7 @@ Partial Class Bienvenido
         Me.btnPerfil.Location = New System.Drawing.Point(27, 162)
         Me.btnPerfil.Name = "btnPerfil"
         Me.btnPerfil.Size = New System.Drawing.Size(90, 42)
-        Me.btnPerfil.TabIndex = 28
+        Me.btnPerfil.TabIndex = 2
         Me.btnPerfil.Text = "MI PERFIL"
         Me.btnPerfil.UseVisualStyleBackColor = False
         '

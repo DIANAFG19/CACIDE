@@ -6,16 +6,12 @@
     Public responsable As String = "Ing. Juan Navarrete Martinez"
     Public empresa As String = "Con Alimentos"
     Public vigencia As String = "09/04/2019"
-    Public clavePrivada As String = "EstebanPH"
-    Public clavePublica As String = "MonicaOS"
 
     Public nombre2 As String = "Monica Osorio Soto"
     Public user2 As String = "MonicaOsSo"
     Public responsable2 As String = "Ing. Veronica Capdeville Sosa"
     Public empresa2 As String = "Con Alimentos"
     Public vigencia2 As String = "10/12/2018"
-    Public clavePrivada2 As String = "MonicaOS"
-    Public clavePublica2 As String = "EstebanPH"
 
     'Clave para cifrar y descifrar, es general.
     Public claveGeneral As String = "CACIDE182"
@@ -34,6 +30,7 @@
     Public claveCambio As String
     Public indiceClave As Integer
     Public numImg As Byte
+    Public offset As Integer
 
     'Variables para guardar la imagen 
     Public nombreImgCi As String
@@ -155,56 +152,9 @@
         End If
     End Sub
 
-
-
-
-
-    Public imagen2b As Bitmap
-
-    Public estado_PB2 As Integer
-    Public hallada_img2b As Boolean
-
-    '
-
-    Public name_img2 As String
-    Public name_archivo As String
-    Public long_archivo As Long
-    '
-
-
-
-    Public offset As Integer
-    '
-
-
-
-
-
-    'cabecera
-
-    Public multiplicidad As Byte
-    'Public num_img As Byte
-    Public metodo As Byte
-
-
-
-
-
-
-
-    Public Function Complemento(ByVal octeto As Byte) As Byte
-        Dim rta, parteH, parteL As Byte
-
-        parteH = octeto And &HF0
-        parteL = octeto And &HF
-        rta = parteH + (15 - parteL)
-        Return rta
-
-    End Function
-
+    'Función para descrifrar con el complemento e intercambio de bits.
     Public Function descifrar(ByVal octeto As Byte) As Byte
         Dim rta As Byte
-
         rta = Complemento(octeto)
         IntercambiarBits(rta, 3, 6)
         IntercambiarBits(rta, 6, 7)
@@ -212,16 +162,21 @@
         IntercambiarBits(rta, 2, 3)
         IntercambiarBits(rta, 1, 4)
         rta = rta Xor Asc(claveCambio.Substring(indiceClave - 1, 1))
-
         If indiceClave = claveCambio.Length Then
             indiceClave = 1
         Else
             indiceClave = indiceClave + 1
         End If
         Return rta
-
     End Function
 
-
+    'Método para los octetos del descifrado
+    Public Function Complemento(ByVal octeto As Byte) As Byte
+        Dim rta, parteH, parteL As Byte
+        parteH = octeto And &HF0
+        parteL = octeto And &HF
+        rta = parteH + (15 - parteL)
+        Return rta
+    End Function
 
 End Module

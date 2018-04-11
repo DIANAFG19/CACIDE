@@ -5,6 +5,8 @@ Imports System.IO
 
 Public Class Descifrar
 
+    'REFERENCIAS:
+    'https://docs.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/strings/walkthrough-encrypting-and-decrypting-strings
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         'Dim comienzo As Integer
@@ -31,14 +33,11 @@ Public Class Descifrar
                     indicePixel = 1
                     indiceColor = 0
                     Call Leer()
-                    'Validamos que la imagen tenga algún texto dentro de ella.
+                    'Validamos que la imagen tenga algún texto dentro de ella y si no lo hay, enviamos un mensaje de error.
                     If tipoDatos = 0 Then
                         tbInformacion.Text = tbInformacion.Text & vbNewLine & "   No hay información cifrada"
                         btnDescifrar.Enabled = False
                     Else
-                        ' If tipoDatos = 1 Or tipoDatos = 3 Then
-                        'tbInformacion.Text = tbInformacion.Text & vbNewLine & "  - Texto"
-                        'End If
                         btnDescifrar.Enabled = True
                     End If
                     tbInformacion.SelectionLength = nombre.Length
@@ -52,24 +51,36 @@ Public Class Descifrar
         Dim octeto, octetoL As Byte
         Dim longTexto As Integer
         Dim texto As String = ""
-
+        'Son los pixeles que se usa en cada bit, quitando el complemento (F, D).
         indicePixel = 22
         indiceColor = 0
-        If multiplicidad > 0 Then
-        Else
-            Call ConClave2()
-            claveCambio = ModificarClave(claveGeneral)
-            indiceClave = 1
-            longTexto = LeerDato()
-            octetoL = LeerDato()
-            longTexto = (longTexto << 8) + octetoL
-                For i = 1 To longTexto
-                octeto = LeerDato()
-                texto = texto & Chr(Module1.descifrar(octeto))
-                Next
-                tbTextoCifrado.Text = texto
+        'Mandamos a llamar al método para descifrar la clave dentro de la imagen.
+        Call ConClave2()
+        'Mandamos  a llamar al método ara modificar la clave (regresarla a su estado original).
+        claveCambio = ModificarClave(claveGeneral)
+        indiceClave = 1
+        'Leemos el texto escrito en cifrar.
+        longTexto = LeerDato()
+        'Se divide en octetos para descifrar.
+        octetoL = LeerDato()
+        longTexto = (longTexto << 8) + octetoL
+        For i = 1 To longTexto
+            octeto = LeerDato()
+            'El texto será igual a lo que se descifre.
+            texto = texto & Chr(Module1.descifrar(octeto))
+        Next
+        'Mostramos el texto cifrado en el textbox de texto cifrado.
+        tbTextoCifrado.Text = texto
+    End Sub
 
-        End If
+    'Función para la inversa de la clave.
+    Private Sub ConClave2()
+        Dim i As Integer
+        offset = 0
+        For i = 1 To claveGeneral.Length
+            offset = offset + Asc(claveGeneral.Substring(i - 1, 1)) Mod 20
+        Next
+        offset = offset Mod 20
     End Sub
 
     'Se lee la imagen, los bits con respecto al cifrado de fecha, clave y complemento
@@ -77,11 +88,12 @@ Public Class Descifrar
         Dim octeto1, octeto2 As Byte
         octeto1 = LeerDatos(8)
         octeto2 = LeerDatos(8)
+        'Estos son el complemento (F, D) y se usarón para cifrar.
         If octeto1 <> Asc("F") Or octeto2 <> Asc("D") Then
             tipoDatos = 0
         Else
+            'comenzamos  a leer los datos
             tipoDatos = LeerDatos(2)
-            multiplicidad = LeerDatos(2)
             anio = LeerDatos(7)
             mes = LeerDatos(4)
             dia = LeerDatos(5)
@@ -89,10 +101,11 @@ Public Class Descifrar
             minuto = LeerDatos(6)
             segundo = LeerDatos(6)
             numImg = LeerDatos(8)
-            metodo = LeerDatos(1)
         End If
     End Sub
 
+    'Leemos todo lo que se encuentra en el texto dentro de la imagen:
+    'El método es similar al de cifrado.
     Private Function LeerDatos(ByVal nbits As Short) As Byte
         Dim i As Short
         Dim fila, columna As Integer
@@ -125,17 +138,7 @@ Public Class Descifrar
         Return rta
     End Function
 
-
-
-    Private Sub ConClave2()
-        Dim i As Integer
-        offset = 0
-        For i = 1 To claveGeneral.Length
-            offset = offset + Asc(claveGeneral.Substring(i - 1, 1)) Mod 20
-        Next
-        offset = offset Mod 20
-    End Sub
-
+    'Funcion que redirecciona a leerDatos indicando el octeto
     Private Function LeerDato() As Byte
         Dim rta As Byte
         rta = LeerDatos(8)
@@ -143,6 +146,7 @@ Public Class Descifrar
     End Function
 
     Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        'Limpiamos todo el formulario.
         tbTextoCifrado.Text = ""
         tbInformacion.Text = ""
         pbImagenCifrada.ImageLocation = ""
@@ -154,6 +158,5 @@ Public Class Descifrar
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
     End Sub
-
 
 End Class
