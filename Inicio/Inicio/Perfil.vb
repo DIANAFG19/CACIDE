@@ -14,7 +14,6 @@
             tbInfoUsuario.Text += "Empresa certificadora: " & empresa2 & vbNewLine
             tbInfoUsuario.Text += "Vigencia de certificado: " & vigencia2
         End If
-
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
