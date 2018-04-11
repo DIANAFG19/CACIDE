@@ -5,8 +5,8 @@ Imports System.IO
 
 Public Class Cifrar
 
-    'MÉTODO DE DIBUJAR LA IAMGEN
-    'REFERECNIAS: https://msdn.microsoft.com/es-es/library/system.drawing.graphics(v=vs.110).aspx
+    'MÉTODO DE DIBUJAR LA IMAGEN
+    'REFERENCIAS: https://msdn.microsoft.com/es-es/library/system.drawing.graphics(v=vs.110).aspx
     Private Sub btnCargar_Click(sender As Object, e As EventArgs) Handles btnCargar.Click
         Dim nombre As String
         Dim bitspp1, bitspp2 As Short
